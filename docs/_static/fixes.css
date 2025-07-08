@@ -1,0 +1,11 @@
+.toctree-wrapper.merge-up > ul {
+    margin-top: -1em;
+}
+
+.sphinxsidebarwrapper > ul {
+    margin-bottom: 0;
+}
+
+.sphinxsidebarwrapper > ul:not(:first-of-type) {
+    margin-top: 0;
+}

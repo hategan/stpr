@@ -1,0 +1,13 @@
+# Docs
+Sphinx==8.2.3
+sphinx_rtd_theme==3.0.2
+sphinx-tabs==3.4.7
+sphinx-multiversion==0.2.4
+piccolo-theme
+
+sphinxcontrib-applehelp==2.0.0
+sphinxcontrib-devhelp==2.0.0
+sphinxcontrib-htmlhelp==2.1.0
+sphinxcontrib-serializinghtml==2.0.0
+sphinxcontrib-qthelp==2.0.0
+sphinxcontrib-plantuml==0.30

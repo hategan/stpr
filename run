@@ -1,0 +1,106 @@
+#!/usr/bin/env python
+
+import inspect
+import os
+import subprocess as sp
+import sys
+
+def run(cmd, env={}, capture=False):
+    if capture:
+        p = sp.Popen(cmd, shell=True, stdout=sp.PIPE, stderr=sp.STDOUT, env=dict(os.environ, **env), 
+                     text=True)
+        out = ''
+        for line in p.stdout:
+            sys.stdout.write(line)
+            out += line
+        if p.returncode != 0:
+            raise sp.CalledProcessError(p.returncode, cmd, output=out)
+        return out
+    else:
+        p = sp.run(cmd, shell=True, stdout=sys.stdout, stderr=sys.stderr, env=dict(os.environ, **env), 
+                   check=True, text=True)
+
+
+CWD = os.getcwd()
+PYTHON = sys.executable
+
+
+def do_tests():
+    """Run test suite"""
+    run(f'{PYTHON} -m pytest -v', env={'PYTHONPATH': f'{CWD}/src'})
+
+
+def do_verbose_tests():
+    """Run test suite with verbose output"""
+    run(f'{PYTHON} -m pytest -v --log-format="%(asctime)s %(levelname)s %(message)s"' \
+        '--log-date-format="%Y-%m-%d %H:%M:%S" --log-cli-level=DEBUG', env={'PYTHONPATH': f'{CWD}/src'})
+
+
+def do_typecheck():
+    """Runs mypy on the source"""
+    run('mypy --config-file=.mypy --strict src tests')
+
+
+def do_stylecheck():
+    """Runs flake8 on the source"""
+    run('flake8 src tests')
+
+
+def do_checks():
+    """Runs all quality checks (mypy, flake8, doc build)"""
+    do_typecheck()
+    do_stylecheck()
+    do_docs()
+
+
+def do_docs():
+    """Compile documentation with default (rtd) theme"""
+    run('rm -rf docs/.generated')
+    run('rm -rf docs/.build')
+    run('sphinx-build --keep-going -n -W -b html docs docs/.build/')
+
+
+def do_web_docs():
+    """Build the documentation for the web pages"""
+    run('rm -rf docs/.generated')
+    run('rm -rf docs/.web-build')
+    run('git fetch --all --tags')
+    try:
+        run('sphinx-multiversion docs docs/.web-build', env={'_WEB_DOCS': '1'}, capture=True)
+    except sp.CalledProcessError as ex:
+        if "No matching refs found" in ex.output:
+            print('\033[0;31mNo releases found!\033[0m')
+    run('sphinx-build --keep-going -n -W -b html docs docs/.web-build/v/dev', 
+        env={'_WEB_DOCS': '1'})
+
+
+def do_web():
+    """Build web pages"""
+    run('web/build.sh')
+
+
+def help(msg=None):
+    fns = [(k, v) for k, v in inspect.getmembers(sys.modules[__name__]) if k.startswith('do_')]
+    if msg:
+        print(f'{msg}\n\n')
+    print('Available commands:')
+    for k, v in fns:
+        print(f'\t{k[3:]}{' '*(20-len(k))}  \033[0;36m{v.__doc__}\033[0m')
+    print('\n\n')
+        
+    sys.exit(0 if msg is None else 1)
+
+if __name__ == '__main__':
+    if len(sys.argv) < 2:
+        help('No command specified')
+
+    cmd = sys.argv[1].replace('-', '_')
+
+    try:
+        eval(f'do_{cmd}()')
+    except sp.CalledProcessError as ex:
+        print(ex.output)
+    except Exception as ex:
+        print(ex)
+
+    

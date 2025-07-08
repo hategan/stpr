@@ -1,0 +1,4 @@
+pytest
+aiofile
+typeguard
+urwid
