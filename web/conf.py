@@ -15,7 +15,7 @@ master_doc = 'index'
 project = u'stpr'
 copyright = u''
 html_theme = 'piccolo_theme'
-html_favicon = 'favicon.ico'
+html_favicon = 'favicon.png'
 
 templates_path = ['_templates']
 

@@ -22,8 +22,8 @@ copyright = u''
 if web_docs:
 	html_theme = 'piccolo_theme'
 else:
-	html_theme = 'rtd_theme'
-html_favicon = 'favicon.ico'
+	html_theme = 'sphinx_rtd_theme'
+html_favicon = 'favicon.png'
 autoclass_content = 'both'
 add_module_names = False
 python_use_unqualified_type_names = True
