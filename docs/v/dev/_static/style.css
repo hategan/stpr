@@ -1,0 +1,482 @@
+body {
+  font-optical-sizing: auto;
+  font-family: "Radio Canada", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+h1 {
+    font-size: 22px;
+}
+
+h2 {
+    font-size: 20px;
+    color: #202020;
+}
+
+h3 {
+    font-size: 18px;
+}
+
+h4 {
+    font-size: 16px;
+}
+
+a#mode_toggle {
+    color: #404040;
+}
+
+div#top_nav nav h1 {
+    flex-grow: 0;
+}
+
+div#top_nav nav h1 img {
+    height: 1.5rem;
+}
+
+.top-menu {
+    flex-grow: 1;
+    margin: 0;
+}
+
+.top-menu li {
+    display: inline-block;
+    margin: 4px;
+    font-size: 14px;
+    border: 1px solid transparent;
+    padding: 4px;
+    border-radius: 3px;
+}
+
+.top-menu li a {
+    color: #000000;
+    font-weight: 350;
+    border-bottom: 3px solid #00000000;
+    padding-left: 1px;
+    padding-right: 1px;
+}
+
+.top-menu li a.active {
+    border-bottom: 3px solid #6060ff;
+}
+
+.top-menu li a:hover {
+    border-bottom: 3px solid #ffbf00;
+}
+
+.gh {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+div.document p {
+    font-size: 12pt !important;
+}
+
+div.document {
+    margin-top: -16px;
+}
+
+body.page-index.notdocpage div.document {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+body.page-index.notdocpage div.documentwrapper {
+    max-width: none;
+}
+
+input {
+    font-family: "Inter", sans-serif !important;
+}
+
+html[data-mode="dark"] h1 {
+    color: #a0a0a0;
+}
+
+html[data-mode="darkest"] h1 {
+    color: #a0a0a0;
+}
+
+div#top-nav, div#top_nav.shadow {
+    height: 48px;
+}
+
+div#top_nav nav {
+    /*background-color: #c49fe2;*/
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #c49fe2;
+    box-shadow: 1px 1px 1px #00000040;
+    height: 48px;
+    padding: 6px;
+    padding-right: 16px;
+    padding-left: 16px;
+}
+
+div#top_nav.shadow {
+    box-shadow: 3pt 3pt 3pt #00000040;
+    transition: all 0.5s ease-in-out;
+}
+
+div#top_nav nav h1 a, div#top_nav nav p#toggle_sidebar a {
+    color: #000000;
+}
+
+#searchbox form.search input[type=text] {
+    border: 1px solid #c49fe2;
+    box-shadow: inset 1px 1px 1px #00000040;
+    border-radius: 3pt;
+}
+
+#searchbox form.search input[type=text]:focus {
+    border: 1px solid #6060ff;
+    outline: none;
+}
+
+#searchbox form.search input[type=submit] {
+    display: none;
+    border: 1px solid #606060;
+    box-shadow: 1px 1px 1px #00000040;
+    border-radius: 3pt;
+}
+
+html[data-mode="light"] h1 {
+    color: #303030;
+}
+
+div.highlight {
+    border: 1px solid #c49fe2;
+    box-shadow: 1px 1px 1px #00000040; 
+}
+
+h1 {
+    font-weight: 500;
+}
+
+div.document div.highlight pre {
+    font-family: "Inconsolata", monospace;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.highlight .kn {
+    font-weight: normal;
+}
+
+.highlight .kn, .highlight .k, .highlight .ow {
+    color: #2030a0;
+}
+
+.highlight .nn, .highlight .nf, .highlight .nb {
+    color: #603010;
+}
+
+.highlight .s1, .highlight .s2 {
+    color: #308020;
+}
+
+.highlight .mf, .highlight .kc {
+    color: #202020;
+    font-weight: bold;
+}
+
+.highlight .si {
+    color: #40a030;
+    font-weight: bold;
+}
+
+.highlight .sa {
+    color: #a03020;
+    font-weight: bold;
+}
+
+.highlight .nd, .nd + .o, 
+.nd + .o + .n {
+    color: #803080;
+    font-weight: bold;
+}
+
+span.pre {
+    border: 1px solid #e0e0e0;
+    padding: 0px 2px 0px;
+    font-family: "Inconsolata", monospace;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+div.sphinxsidebar {
+    padding-left: 0;
+    width: 290px;
+    border-right: 1px solid #c49fe270;
+}
+
+div#right_sidebar {
+    border-left: 1px solid #c49fe270;
+}
+
+div.sphinxsidebar > div > ul > li {
+    padding-left: 8px;
+    margin-left: 8px;
+}
+
+div.sphinxsidebar > div > div {
+    padding-left: 16px;
+}
+
+li.current {
+    border: 1px solid #c49fe2;
+    background: #d3bfe2;
+    border-radius: 3pt;
+}
+
+div.sphinxsidebar > div ul li a {
+    padding-bottom: 6px;
+    padding-top: 6px;
+}
+
+div.sphinxsidebar > div ul li {
+    border: 1px solid transparent;
+    border-radius: 3pt;
+}
+
+div.sphinxsidebar > div ul li a.current {
+    color: #404040;
+}
+
+div.sphinxsidebar > div ul li a:hover {
+    color: #404040;
+}
+
+div.sphinxsidebar > div ul li:hover:not(.current), p.topless:hover,
+div#right_sidebar .page_toc ul li a:hover {
+    border: 1px solid #ffbf00;
+    background-color: #ffbf0020;
+    color: #303030;
+}
+
+div#right_sidebar .page_toc ul,
+div#right_sidebar .page_toc ul li {
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+div#right_sidebar .page_toc ul li a {
+    border: 1px solid transparent;
+    border-radius: 3pt;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+div#right_sidebar .page_toc > ul > li > a {
+    padding-left: 8px;
+}
+
+div#right_sidebar .page_toc > ul > li > ul > li > a {
+    padding-left: 16px;
+}
+
+div#right_sidebar .page_toc > ul > li > ul > li > ul > li > a {
+    padding-left: 24px;
+}
+
+div#right_sidebar .page_toc > ul > li > ul > li > ul > li > ul > li > a {
+    padding-left: 32px;
+}
+
+div.sphinxsidebar > div > div {
+    padding-left: 8px;
+}
+
+div.sphinxsidebar > div > div > h4 {
+    padding-left: 8px;
+    margin-bottom: 4px;
+}
+
+p.topless {
+    padding-bottom: 6px;
+    padding-top: 6px;
+    padding-left: 12px;
+    padding-right: 8px;
+    margin-left: 0px;
+    border: 1px solid transparent;
+    border-radius: 3pt;
+    margin-top: 4px;
+    margin-bottom: 0;
+}
+
+p.topless > a {
+    color: #404040;
+}
+
+a.headerlink: hover {
+
+}
+
+a {
+    color: #5080df;
+}
+
+div.sphinxsidebar div[aria-label="source link"] {
+    display: none;
+}
+
+#right_sidebar .page-toc {
+    margin-left: 8px;
+}
+
+code.xref > .pre {
+    color: #0000a0;
+}
+
+code.code > .pre, code.literal > .pre {
+    border: none;
+}
+
+div.document code.code, div.document code.literal {
+    border-radius: 0.2rem;
+    border: 1px solid #d0d0d6;
+    background-color: #f0f0f6;
+    /*box-shadow: 1px 1px 1px #00000040;*/
+    box-shadow: none;
+    padding: 0px 2px;
+    padding-bottom: 1px;
+}
+
+div.document dl.py dt.sig {
+    font-family: "Inconsolata", monospace;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16px;
+}
+
+div.document dl.py dt.sig > br {
+    display: none;
+}
+
+div.document dl.py dt.sig > em.sig-param {
+    margin-left: 0;
+}
+
+div.document dl.py dt.sig span.pre {
+    border: none;
+}
+
+div.document dl.py dt.sig span.sig-name {
+    color: #603010;
+}
+
+div.document dl.py dt.sig em.sig-param {
+    font-style: normal;
+}
+
+div.document dl.py dt.sig em.sig-param span.n {
+    color: #252630;
+}
+
+div.document dl.py dt.sig em.sig-param span.default_value {
+    color: #000000;
+}
+
+div.document dl.py dt.sig {
+    border: 1px solid #00004040;
+    border-top: 6px solid #ffaf0080;
+    margin-top: 32px;
+    box-shadow: 1px 1px 2px #00000020;
+}
+
+div.document dd {
+    margin-right: 1.5rem;
+}
+
+.stprtr > dt.sig > em.property {
+    display: none;
+}
+
+.sig .viewcode-link {
+    float: right;
+}
+
+.sig .viewcode-link span.pre {
+    display: none;
+}
+
+dt.sig span.pre {
+    padding: 0;
+}
+
+dt.sig em.sig-param span.n:first-child {
+    font-weight: bold;
+}
+
+/* Main page */
+
+.main-section {
+    margin-left: 10em;
+    margin-right: 10em;
+    margin-top: 4em;
+    display: flex;
+    max-width: 900px;
+}
+
+.main-section .left {
+    flex: 4;
+}
+
+.main-section .right {
+    flex: 3;
+}
+
+.main-section .left h1 {
+    margin-top: 48px;
+    font-size: 42px;
+    color: #404040;
+}
+
+.main-section .left p {
+    width: 80%;
+    margin-left: 10%;
+}
+
+.main-code {
+    width: 80%;
+    background-color: #f0f0f0;
+    margin: 8px;
+    padding: 16px;
+    border-radius: 5px;
+
+    font-family: "Inconsolata", monospace;
+    font-optical-sizing: auto;
+    font-weight: 350;
+    font-style: normal;
+    font-size: 16px;
+}
+
+.main-code .k {
+    color: #000000;
+}
+
+.main-code .f {
+    font-weight: 450;
+    color: #bf8c00;
+}
+
+a.button {
+    border: 1px solid #606060;
+    border-radius: 4px;
+    background-color: #f0f0f0;
+    padding: 4px 6px;
+    font-size: 14px;
+    box-shadow: 1px 1px 1px #00000040;
+    color: #202020;
+    font-weight: 400;
+    transition: all 0.2s ease-in-out;
+}
+
+a.button:hover {
+    background-color: #fffff8;
+}

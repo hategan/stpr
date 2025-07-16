@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>stpr.types &#8212; Stpr</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic_mod.css?v=9b2032db" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style.css?v=b283b5c5" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fixes.css?v=40ebb8c7" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Radio+Canada:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+
+    
+    <script src="../../_static/documentation_options.js?v=d45e8c67"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/main.js?v=6c1a4791"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/petite-vue.js"></script>
+
+    <link rel="canonical" href="/stpr/_modules/stpr/types.html" />
+    <link rel="icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+  </head><body class="page-_modules/stpr/types docpage" data-dark_mode_code_blocks="true">
+    <div id="top_nav">
+        
+
+        <nav>
+            
+                
+            
+
+            <h1><a href="/stpr" title="Go to homepage">Stpr</a></h1>
+
+
+            <ul class="top-menu">
+    <li><a href="/stpr/install.html" class="not-active">Install</a></li>
+    <li><a href="/stpr/docs/index.html" class="active">Documentation</a></li>
+</ul>
+                <p class="mobile_search_link">
+                    <a href="../../search.html" title="Search">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65 64" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2">
+                            <path d="M14.873 40.009c-2.315-3.943-3.642-8.532-3.642-13.429C11.231 11.91 23.141 0 37.811 0s26.58 11.91 26.58 26.58-11.91 26.58-26.58 26.58a26.44 26.44 0 0 1-14.277-4.161L9.739 62.794a3.12 3.12 0 0 1-4.413 0L.913 58.382c-1.217-1.218-1.217-3.196 0-4.413l13.96-13.96zM37.811 8.054c10.225 0 18.526 8.301 18.526 18.526s-8.301 18.526-18.526 18.526-18.526-8.301-18.526-18.526S27.586 8.054 37.811 8.054z" fill="#fff" />
+                        </svg>
+                    </a>
+                </p>
+            
+                <div class="searchbox_wrapper">
+                    
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+                </div>
+            
+
+            <a href="https://github.com/hategan/stpr" class="gh">GitHub</a>
+        </nav>
+    </div>
+
+        
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial.html">Tutorial</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/primitives.html">Concurrency Primitives</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/types.html">Stpr Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/functions.html">Stpr Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/reactives.html">Reactive Variables and Functions</a></li>
+</ul>
+
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+
+    
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for stpr.types</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">import</span> <span class="nn">collections</span>
+<span class="kn">import</span> <span class="nn">concurrent</span>
+<span class="kn">import</span> <span class="nn">threading</span>
+<span class="kn">from</span> <span class="nn">asyncio</span> <span class="kn">import</span> <span class="n">events</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TypeVar</span>
+
+
+<span class="n">T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">)</span>
+<span class="sd">&quot;&quot;&quot;A generic type alias.&quot;&quot;&quot;</span>
+
+
+<div class="viewcode-block" id="Lock">
+<a class="viewcode-back" href="../../api/primitives.html#stpr.Lock">[docs]</a>
+<span class="k">class</span> <span class="nc">Lock</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A thread and asyncio safe lock.</span>
+
+<span class="sd">    It is recommended that the lock be used as a context manager. Synchronous functions should</span>
+<span class="sd">    use the synchronous context manager protocol (i.e., `with lock`) whereas coroutines should</span>
+<span class="sd">    use the asynchronous context manager protocol (i.e., `async with lock`). If used in a `stpr`</span>
+<span class="sd">    function, the asynchronous protocol will be used automatically.</span>
+
+<span class="sd">    Alternatively, the functions :meth:`acquire_sync`, :meth:`release_sync`,</span>
+<span class="sd">    :func:`acquire_async`, and :func:`release_async` can be used explicitly.</span>
+
+<span class="sd">    At this time, this lock is only re-entrant if re-entered either in the same thread or in an</span>
+<span class="sd">    async context. It is not re-entrant if invoked from both a sync and async context. Consider</span>
+<span class="sd">    the following example:</span>
+
+<span class="sd">    .. code-block:: Python</span>
+
+<span class="sd">        lock = stpr.Lock()</span>
+
+<span class="sd">        def sync_function():</span>
+<span class="sd">            with lock:</span>
+<span class="sd">                ...</span>
+
+<span class="sd">        @stpr.fn</span>
+<span class="sd">        def async_function():</span>
+<span class="sd">            with lock:</span>
+<span class="sd">                sync_function()</span>
+
+<span class="sd">        stpr.run(async_function)</span>
+
+<span class="sd">    In the above case, `sync_function` is executed in a thread pool. This effectively causes</span>
+<span class="sd">    `sync_function` to run in a thread that is different from the thread that executes the</span>
+<span class="sd">    async loop and in which `async_function` is running. In this case, re-entrance is not easily</span>
+<span class="sd">    distinguishable from the lock being acquired in two different threads.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create a new `Lock` instance.</span>
+
+<span class="sd">        :meth:`acquire_sync`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_waiters</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">deque</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_owner</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_alock</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_count</span> <span class="o">=</span> <span class="mi">0</span>
+
+<div class="viewcode-block" id="Lock.acquire_async">
+<a class="viewcode-back" href="../../api/primitives.html#stpr.Lock.acquire_async">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">acquire_async</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Acquire the lock from an async context.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">me</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">get_ident</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_owner</span> <span class="o">==</span> <span class="n">me</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_count</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_alock</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
+            <span class="k">return</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_owner</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_owner</span> <span class="o">=</span> <span class="n">me</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_count</span> <span class="o">=</span> <span class="mi">1</span>
+                    <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_alock</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
+                    <span class="k">return</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">loop</span> <span class="o">=</span> <span class="n">events</span><span class="o">.</span><span class="n">get_running_loop</span><span class="p">()</span>
+                    <span class="n">future</span> <span class="o">=</span> <span class="n">loop</span><span class="o">.</span><span class="n">create_future</span><span class="p">()</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_waiters</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">future</span><span class="p">,</span> <span class="n">me</span><span class="p">))</span>
+            <span class="k">await</span> <span class="n">future</span></div>
+
+
+<div class="viewcode-block" id="Lock.acquire_sync">
+<a class="viewcode-back" href="../../api/primitives.html#stpr.Lock.acquire_sync">[docs]</a>
+    <span class="k">def</span> <span class="nf">acquire_sync</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Acquire the lock from a synchronous context.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">me</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">get_ident</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_owner</span> <span class="o">==</span> <span class="n">me</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_count</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">return</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_owner</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_owner</span> <span class="o">=</span> <span class="n">me</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_count</span> <span class="o">=</span> <span class="mi">1</span>
+                    <span class="k">return</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">future</span> <span class="o">=</span> <span class="n">concurrent</span><span class="o">.</span><span class="n">futures</span><span class="o">.</span><span class="n">Future</span><span class="p">()</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_waiters</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">future</span><span class="p">,</span> <span class="n">me</span><span class="p">))</span>
+            <span class="n">future</span><span class="o">.</span><span class="n">result</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Lock.release_async">
+<a class="viewcode-back" href="../../api/primitives.html#stpr.Lock.release_async">[docs]</a>
+    <span class="k">def</span> <span class="nf">release_async</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Release the lock from an asynchronous context.</span>
+
+<span class="sd">        The lock must have previously been acquired using :func:`acquire_async`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">me</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">get_ident</span><span class="p">()</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_owner</span> <span class="o">!=</span> <span class="n">me</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;Lock is not acquired.&#39;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_count</span> <span class="o">-=</span> <span class="mi">1</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_alock</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_count</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_waiters</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_owner</span> <span class="o">=</span> <span class="kc">None</span>
+                        <span class="k">return</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="p">(</span><span class="n">future</span><span class="p">,</span> <span class="n">thread</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_waiters</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_owner</span> <span class="o">=</span> <span class="n">thread</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_count</span> <span class="o">=</span> <span class="mi">1</span>
+                        <span class="n">future</span><span class="o">.</span><span class="n">set_result</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Lock.release_sync">
+<a class="viewcode-back" href="../../api/primitives.html#stpr.Lock.release_sync">[docs]</a>
+    <span class="k">def</span> <span class="nf">release_sync</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Release the lock from a synchronous context.</span>
+
+<span class="sd">        The lock must have previously been acquired using :func:`acquire_sync`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">me</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">get_ident</span><span class="p">()</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_owner</span> <span class="o">!=</span> <span class="n">me</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;Lock is not acquired.&#39;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_count</span> <span class="o">-=</span> <span class="mi">1</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_count</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_waiters</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_owner</span> <span class="o">=</span> <span class="kc">None</span>
+                        <span class="k">return</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="p">(</span><span class="n">future</span><span class="p">,</span> <span class="n">thread</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_waiters</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_owner</span> <span class="o">=</span> <span class="n">thread</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_count</span> <span class="o">=</span> <span class="mi">1</span>
+                        <span class="n">future</span><span class="o">.</span><span class="n">set_result</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span></div>
+
+
+    <span class="k">async</span> <span class="k">def</span> <span class="fm">__aenter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">acquire_async</span><span class="p">()</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="fm">__aexit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_value</span><span class="p">,</span> <span class="n">tb</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">release_async</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">acquire_sync</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_val</span><span class="p">,</span> <span class="n">exc_tb</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">release_sync</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="Throttle">
+<a class="viewcode-back" href="../../api/primitives.html#stpr.Throttle">[docs]</a>
+<span class="k">class</span> <span class="nc">Throttle</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents a throttle.</span>
+
+<span class="sd">    A throttle is a mechanism that places an upper limit on the number of concurrent operations that</span>
+<span class="sd">    can occur at a given point in the code. The following code shows an example of throttle use:</span>
+
+<span class="sd">    .. code-block:: Python</span>
+
+<span class="sd">        throttle = Throttle(5)</span>
+
+<span class="sd">        @stpr.fn</span>
+<span class="sd">        def process(i: int) -&gt; None:</span>
+<span class="sd">            with throttle:</span>
+<span class="sd">                print(f&#39;start {i}&#39;)</span>
+<span class="sd">                stpr.wait(1)</span>
+<span class="sd">                print(f&#39;end {i}&#39;)</span>
+
+<span class="sd">        @stpr.fn</span>
+<span class="sd">        def throttle_example() -&gt; None:</span>
+<span class="sd">            with stpr.parallelFor(range(20)) as i:</span>
+<span class="sd">                process(i)</span>
+
+<span class="sd">    In this example, at most 5 concurrent instances of the `with` block in the `process` function</span>
+<span class="sd">    will be allowed.</span>
+
+<span class="sd">    At this time, `Throttle` only implements the async context manager. This is automatically</span>
+<span class="sd">    used in `stpr` functions when using the `with` keyword.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param n: Represents the maximum number of simultaneous parallel threads that this throttle</span>
+<span class="sd">            will allow.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="n">n</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_queue</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">Queue</span><span class="p">(</span><span class="n">maxsize</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="fm">__aenter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="fm">__aexit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_val</span><span class="p">,</span> <span class="n">exc_tb</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_queue</span><span class="o">.</span><span class="n">get_nowait</span><span class="p">()</span></div>
+
+
+
+</pre></div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        <div id="right_sidebar">
+            <h4>Page contents</h4>
+            <div class="page_toc">
+                
+            </div>
+        </div>
+    
+
+      <div class="clearer"></div>
+    </div>
+    <div class="button_nav_wrapper">
+        <div class="button_nav">
+            <div class="left">
+                
+            </div>
+
+            <div class="right">
+                
+            </div>
+        </div>
+    </div>
+
+        
+
+  </body>
+</html>

@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>stpr.reactive &#8212; Stpr</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic_mod.css?v=9b2032db" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style.css?v=b283b5c5" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fixes.css?v=40ebb8c7" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Radio+Canada:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+
+    
+    <script src="../../_static/documentation_options.js?v=d45e8c67"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/main.js?v=6c1a4791"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/petite-vue.js"></script>
+
+    <link rel="canonical" href="/stpr/_modules/stpr/reactive.html" />
+    <link rel="icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+  </head><body class="page-_modules/stpr/reactive docpage" data-dark_mode_code_blocks="true">
+    <div id="top_nav">
+        
+
+        <nav>
+            
+                
+            
+
+            <h1><a href="/stpr" title="Go to homepage">Stpr</a></h1>
+
+
+            <ul class="top-menu">
+    <li><a href="/stpr/install.html" class="not-active">Install</a></li>
+    <li><a href="/stpr/docs/index.html" class="active">Documentation</a></li>
+</ul>
+                <p class="mobile_search_link">
+                    <a href="../../search.html" title="Search">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65 64" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2">
+                            <path d="M14.873 40.009c-2.315-3.943-3.642-8.532-3.642-13.429C11.231 11.91 23.141 0 37.811 0s26.58 11.91 26.58 26.58-11.91 26.58-26.58 26.58a26.44 26.44 0 0 1-14.277-4.161L9.739 62.794a3.12 3.12 0 0 1-4.413 0L.913 58.382c-1.217-1.218-1.217-3.196 0-4.413l13.96-13.96zM37.811 8.054c10.225 0 18.526 8.301 18.526 18.526s-8.301 18.526-18.526 18.526-18.526-8.301-18.526-18.526S27.586 8.054 37.811 8.054z" fill="#fff" />
+                        </svg>
+                    </a>
+                </p>
+            
+                <div class="searchbox_wrapper">
+                    
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+                </div>
+            
+
+            <a href="https://github.com/hategan/stpr" class="gh">GitHub</a>
+        </nav>
+    </div>
+
+        
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial.html">Tutorial</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/primitives.html">Concurrency Primitives</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/types.html">Stpr Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/functions.html">Stpr Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/reactives.html">Reactive Variables and Functions</a></li>
+</ul>
+
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+
+    
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for stpr.reactive</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This module implements reactive values and functions. Reactive functions automatically update their</span>
+<span class="sd">results whenever their inputs change. A basic usage scenario is when one wants to compute a</span>
+<span class="sd">function on some data that is periodically updated:</span>
+
+<span class="sd">.. code-block:: Python</span>
+
+<span class="sd">    @stpr.reactive.fn</span>
+<span class="sd">    def f(x: float) -&gt; float:</span>
+<span class="sd">        return math.sin(x)</span>
+
+<span class="sd">    @stpr.fn</span>
+<span class="sd">    main() -&gt; None:</span>
+<span class="sd">        x: Reactive[float] = Reactive()</span>
+
+<span class="sd">        result = f(x)</span>
+
+<span class="sd">        with stpr.parallel:</span>
+<span class="sd">            for (r, value, old) in result.updates():</span>
+<span class="sd">                print(f&#39;Result updated from {old} to {value}.&#39;)</span>
+<span class="sd">            for value in [0.1, 0.2, 0.3, 0.4]:</span>
+<span class="sd">                x.update(value)</span>
+<span class="sd">                stpr.wait(1.0)</span>
+
+<span class="sd">    stpr.run(main)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">import</span> <span class="nn">inspect</span>
+<span class="kn">import</span> <span class="nn">operator</span>
+<span class="kn">import</span> <span class="nn">traceback</span>
+
+<span class="kn">import</span> <span class="nn">stpr</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">Channel</span>
+<span class="kn">from</span> <span class="nn">._debug</span> <span class="kn">import</span> <span class="n">Color</span><span class="p">,</span> <span class="n">_print</span>
+<span class="kn">from</span> <span class="nn">.functions</span> <span class="kn">import</span> <span class="n">async_partial</span><span class="p">,</span> <span class="n">start</span>
+<span class="kn">from</span> <span class="nn">.transformer</span> <span class="kn">import</span> <span class="n">fn</span> <span class="k">as</span> <span class="n">stprfn</span>
+<span class="kn">from</span> <span class="nn">.types</span> <span class="kn">import</span> <span class="n">Lock</span><span class="p">,</span> <span class="n">T</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Awaitable</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Generic</span><span class="p">,</span> <span class="n">Union</span>
+
+
+<div class="viewcode-block" id="Undefined">
+<a class="viewcode-back" href="../../api/reactives.html#stpr.reactive.Undefined">[docs]</a>
+<span class="k">class</span> <span class="nc">Undefined</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This class is the type of the :py:const:`UNDEFINED` value which is used to represent a reactive</span>
+<span class="sd">    that has no particular value. Since ``None`` is a possible value of a reactive,</span>
+<span class="sd">    :py:const:`UNDEFINED` is distinct from it.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;UNDEFINED&#39;</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span></div>
+
+
+
+<span class="n">UNDEFINED</span> <span class="o">=</span> <span class="n">Undefined</span><span class="p">()</span>
+<span class="sd">&quot;&quot;&quot;A special value that indicates that a reactive does not have an explicit value.&quot;&quot;&quot;</span>
+
+
+<div class="viewcode-block" id="Reactive">
+<a class="viewcode-back" href="../../api/reactives.html#stpr.reactive.Reactive">[docs]</a>
+<span class="k">class</span> <span class="nc">Reactive</span><span class="p">(</span><span class="n">Generic</span><span class="p">[</span><span class="n">T</span><span class="p">]):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Implements a reactive.</span>
+
+<span class="sd">    A reactive is a wrapper around other python objects that can be used to implement functions</span>
+<span class="sd">    whose results get updated automatically when a reactive parameter changes. The main mechanism</span>
+<span class="sd">    of updating a `Reactive` is by calling the :py:func:`Reactive.update` method.</span>
+
+<span class="sd">    The base `Reactive` class overrides most operators to properly handle reactivity. For example:</span>
+
+<span class="sd">    .. code-block:: Python</span>
+
+<span class="sd">        a = Reactive()</span>
+<span class="sd">        b = Reactive()</span>
+
+<span class="sd">        r = a + b  # r is a reactive that is updated whenever a or b are.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">T</span><span class="p">,</span> <span class="n">Undefined</span><span class="p">]</span> <span class="o">=</span> <span class="n">UNDEFINED</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates a new reactive and optionally initializes it.</span>
+
+<span class="sd">        By default, a new reactive will have a value of :py:const:`UNDEFINED`. A reactive with</span>
+<span class="sd">        an :py:const:`UNDEFINED` value prevents reactive functions that depend on it from being</span>
+<span class="sd">        invoked. Alternatively, the reactive can be initialized with a value using the ``value``</span>
+<span class="sd">        parameter.</span>
+
+<span class="sd">        :param value: A value to initialize this `Reactive` with.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_callbacks</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
+
+<div class="viewcode-block" id="Reactive.add_callback">
+<a class="viewcode-back" href="../../api/reactives.html#stpr.reactive.Reactive.add_callback">[docs]</a>
+    <span class="k">def</span> <span class="nf">add_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cb</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="s1">&#39;Reactive[T]&#39;</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">T</span><span class="p">],</span> <span class="n">Awaitable</span><span class="p">[</span><span class="nb">object</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Adds a callback to this reactive.</span>
+
+<span class="sd">        A callback can be used to get asynchronous notifications when a `Reactive` is updated. This</span>
+<span class="sd">        method is mostly used for implementing low-level functionality.</span>
+
+<span class="sd">        Callbacks take three arguments: a `Reactive`, the new value, and the old value. The</span>
+<span class="sd">        `Reactive` argument can be useful if multiplexing a single callback function with updates</span>
+<span class="sd">        from multiple reactives.</span>
+
+<span class="sd">        :param cb: A callback function to be called when this reactive is updated.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">cb</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Invalid callback </span><span class="si">{</span><span class="n">cb</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">iscoroutinefunction</span><span class="p">(</span><span class="n">cb</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Callback </span><span class="si">{</span><span class="n">cb</span><span class="si">}</span><span class="s1"> is not a coroutine.&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_callbacks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cb</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Reactive.update">
+<a class="viewcode-back" href="../../api/reactives.html#stpr.reactive.Reactive.update">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Updates the value of this reactive.</span>
+
+<span class="sd">        The update triggers updates to all functions that have this `Reactive` as input. In</span>
+<span class="sd">        principle, if the updated value is the same as the existing value of this `Reactive`, the</span>
+<span class="sd">        update is silently discarded. This behavior can be overridden with the `force` parameter.</span>
+
+<span class="sd">        :param value: The value to update this `Reactive` with.</span>
+<span class="sd">        :param force: Setting this to `True` forces an update even if the updated value is the same</span>
+<span class="sd">            as the existing value of this `Reactive`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">old</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="k">if</span> <span class="n">force</span> <span class="ow">or</span> <span class="n">old</span> <span class="o">!=</span> <span class="n">value</span><span class="p">:</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_notify</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">old</span><span class="p">)</span></div>
+
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_notify</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="n">old</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">cb</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_callbacks</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">await</span> <span class="n">cb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">old</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Failed to invoke callback </span><span class="si">{</span><span class="n">cb</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Reactive.chain">
+<a class="viewcode-back" href="../../api/reactives.html#stpr.reactive.Reactive.chain">[docs]</a>
+    <span class="k">def</span> <span class="nf">chain</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s1">&#39;Reactive[T]&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Chains this reactive to another reactive.</span>
+
+<span class="sd">        When chaining reactives, the chained reactive will be updated whenever this reactive is</span>
+<span class="sd">        updated.</span>
+
+<span class="sd">        :param other: The `Reactive` to chain.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">async</span> <span class="k">def</span> <span class="nf">chain_cb</span><span class="p">(</span><span class="n">r</span><span class="p">:</span> <span class="s1">&#39;Reactive[T]&#39;</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="n">old</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">await</span> <span class="n">other</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_callback</span><span class="p">(</span><span class="n">chain_cb</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Reactive.updates">
+<a class="viewcode-back" href="../../api/reactives.html#stpr.reactive.Reactive.updates">[docs]</a>
+    <span class="k">def</span> <span class="nf">updates</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Channel</span><span class="p">[</span><span class="n">T</span><span class="p">,</span> <span class="n">T</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns a channel that produces this reactive&#39;s updates.</span>
+
+<span class="sd">        The returned channel can be iterated over. Each iteration produces a tuple</span>
+<span class="sd">        `(new_val, old_val)` which represent the updated value and the old value of the reactive,</span>
+<span class="sd">        respectively.</span>
+
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">channel</span> <span class="o">=</span> <span class="n">Channel</span><span class="p">()</span>
+        <span class="k">async</span> <span class="k">def</span> <span class="nf">callback</span><span class="p">(</span><span class="n">r</span><span class="p">:</span> <span class="s1">&#39;Reactive[T]&#39;</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="n">old</span><span class="p">:</span> <span class="n">T</span><span class="p">):</span>
+            <span class="n">channel</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">value</span><span class="p">,</span> <span class="n">old</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_callback</span><span class="p">(</span><span class="n">callback</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">channel</span></div>
+
+
+    <span class="k">def</span> <span class="fm">__lt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s1">&#39;Reactive[T]&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Reactive[T]&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_ReactiveBinOp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">operator</span><span class="o">.</span><span class="n">lt</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__le__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s1">&#39;Reactive[T]&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Reactive[T]&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_ReactiveBinOp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">operator</span><span class="o">.</span><span class="n">le</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s1">&#39;Reactive[T]&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Reactive[T]&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_ReactiveBinOp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">operator</span><span class="o">.</span><span class="n">eq</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__ne__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s1">&#39;Reactive[T]&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Reactive[T]&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_ReactiveBinOp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">operator</span><span class="o">.</span><span class="n">ne</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__ge__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s1">&#39;Reactive[T]&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Reactive[T]&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_ReactiveBinOp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">operator</span><span class="o">.</span><span class="n">ge</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__gt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s1">&#39;Reactive[T]&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Reactive[T]&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_ReactiveBinOp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">operator</span><span class="o">.</span><span class="n">gt</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__not__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Reactive[T]&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_ReactiveUnaryOp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">operator</span><span class="o">.</span><span class="n">not_</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__abs__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Reactive[T]&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_ReactiveUnaryOp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">operator</span><span class="o">.</span><span class="n">abs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__invert__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Reactive[T]&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_ReactiveUnaryOp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">operator</span><span class="o">.</span><span class="n">inv</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__neg__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Reactive[T]&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_ReactiveUnaryOp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">operator</span><span class="o">.</span><span class="n">neg</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__pos__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Reactive[T]&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_ReactiveUnaryOp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">operator</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s1">&#39;Reactive[T]&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Reactive[T]&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_ReactiveBinOp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">operator</span><span class="o">.</span><span class="n">add</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__and__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s1">&#39;Reactive[T]&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Reactive[T]&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_ReactiveBinOp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">operator</span><span class="o">.</span><span class="n">and_</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__lshift__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s1">&#39;Reactive[T]&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Reactive[T]&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_ReactiveBinOp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">operator</span><span class="o">.</span><span class="n">lshift</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__mod__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s1">&#39;Reactive[T]&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Reactive[T]&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_ReactiveBinOp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">operator</span><span class="o">.</span><span class="n">mod</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s1">&#39;Reactive[T]&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Reactive[T]&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_ReactiveBinOp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">operator</span><span class="o">.</span><span class="n">mul</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__matmul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s1">&#39;Reactive[T]&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Reactive[T]&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_ReactiveBinOp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">operator</span><span class="o">.</span><span class="n">matmul</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__or__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s1">&#39;Reactive[T]&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Reactive[T]&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_ReactiveBinOp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">operator</span><span class="o">.</span><span class="n">or_</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__pow__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s1">&#39;Reactive[T]&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Reactive[T]&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_ReactiveBinOp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">operator</span><span class="o">.</span><span class="n">pow</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s1">&#39;Reactive[T]&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Reactive[T]&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_ReactiveBinOp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">operator</span><span class="o">.</span><span class="n">sub</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__truediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s1">&#39;Reactive[T]&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Reactive[T]&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_ReactiveBinOp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">operator</span><span class="o">.</span><span class="n">truediv</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__xor__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s1">&#39;Reactive[T]&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Reactive[T]&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_ReactiveBinOp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">operator</span><span class="o">.</span><span class="n">xor</span><span class="p">)</span></div>
+
+
+
+<span class="k">class</span> <span class="nc">_ReactiveBinOp</span><span class="p">(</span><span class="n">Reactive</span><span class="p">[</span><span class="n">T</span><span class="p">]):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="n">Reactive</span><span class="p">[</span><span class="n">T</span><span class="p">],</span> <span class="n">b</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Reactive</span><span class="p">[</span><span class="n">T</span><span class="p">],</span> <span class="n">T</span><span class="p">],</span> <span class="n">op</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">T</span><span class="p">,</span> <span class="n">T</span><span class="p">],</span> <span class="n">T</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">va</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">value</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">Reactive</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">vb</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">value</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">vb</span> <span class="o">=</span> <span class="n">b</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">op</span> <span class="o">=</span> <span class="n">op</span>
+
+        <span class="n">stpr</span><span class="o">.</span><span class="n">_start</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_update_op</span><span class="p">())</span>
+
+        <span class="n">a</span><span class="o">.</span><span class="n">add_callback</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cba</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">Reactive</span><span class="p">):</span>
+            <span class="n">b</span><span class="o">.</span><span class="n">add_callback</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cbb</span><span class="p">)</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_update_op</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">va</span> <span class="o">==</span> <span class="n">UNDEFINED</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">vb</span> <span class="o">==</span> <span class="n">UNDEFINED</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">op</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">va</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">vb</span><span class="p">))</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_cba</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">r</span><span class="p">:</span> <span class="n">Reactive</span><span class="p">[</span><span class="n">T</span><span class="p">],</span> <span class="n">value</span><span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="n">old</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">va</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update_op</span><span class="p">()</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_cbb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">r</span><span class="p">:</span> <span class="n">Reactive</span><span class="p">[</span><span class="n">T</span><span class="p">],</span> <span class="n">value</span><span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="n">old</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vb</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update_op</span><span class="p">()</span>
+
+
+<span class="k">class</span> <span class="nc">_ReactiveUnaryOp</span><span class="p">(</span><span class="n">Reactive</span><span class="p">[</span><span class="n">T</span><span class="p">]):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">r</span><span class="p">:</span> <span class="n">Reactive</span><span class="p">[</span><span class="n">T</span><span class="p">],</span> <span class="n">op</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">T</span><span class="p">],</span> <span class="n">T</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">op</span> <span class="o">=</span> <span class="n">op</span>
+
+        <span class="n">stpr</span><span class="o">.</span><span class="n">_start</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_update_op</span><span class="p">())</span>
+
+        <span class="n">r</span><span class="o">.</span><span class="n">add_callback</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cb</span><span class="p">)</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_update_op</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">va</span> <span class="o">==</span> <span class="n">UNDEFINED</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">vb</span> <span class="o">==</span> <span class="n">UNDEFINED</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">op</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">va</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">vb</span><span class="p">))</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_cb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">r</span><span class="p">:</span> <span class="n">Reactive</span><span class="p">[</span><span class="n">T</span><span class="p">],</span> <span class="n">value</span><span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="n">old</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">op</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+
+
+<div class="viewcode-block" id="Debounce">
+<a class="viewcode-back" href="../../api/reactives.html#stpr.reactive.Debounce">[docs]</a>
+<span class="k">class</span> <span class="nc">Debounce</span><span class="p">(</span><span class="n">Reactive</span><span class="p">[</span><span class="n">T</span><span class="p">]):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Implements a de-bounced `Reactive`.</span>
+
+<span class="sd">    The de-bounced reactive only updates if the source reactive has not changed its value for</span>
+<span class="sd">    a pre-determined amount of time. This can be used to filter-out rapid changes in a reactive&#39;s</span>
+<span class="sd">    value.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">r</span><span class="p">:</span> <span class="n">Reactive</span><span class="p">[</span><span class="n">T</span><span class="p">],</span> <span class="n">time</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">T</span><span class="p">,</span> <span class="n">Undefined</span><span class="p">]</span> <span class="o">=</span> <span class="n">UNDEFINED</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructs a new `Debounce`.</span>
+
+<span class="sd">        :param r: The source `Reactive` which is to be de-bounced.</span>
+<span class="sd">        :param time: An amount of time, in seconds, that the source reactive needs to have held</span>
+<span class="sd">            single value for this instance to update.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">time</span> <span class="o">=</span> <span class="n">time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span> <span class="o">=</span> <span class="n">Lock</span><span class="p">()</span>
+        <span class="n">r</span><span class="o">.</span><span class="n">add_callback</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cb</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">seq</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="n">stpr</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cb2</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">value</span><span class="p">))</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_cb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">r</span><span class="p">:</span> <span class="n">Reactive</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="n">old</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">stpr</span><span class="o">.</span><span class="n">_start</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cb2</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_cb2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">seq</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">seq</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">seq</span>
+            <span class="n">old</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span>
+        <span class="k">await</span> <span class="n">stpr</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">time</span><span class="p">)</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">seq</span> <span class="o">==</span> <span class="n">seq</span><span class="p">:</span>
+                <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_notify</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">old</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Debounce.update">
+<a class="viewcode-back" href="../../api/reactives.html#stpr.reactive.Debounce.update">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Debounce cannot be directly updated&#39;</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="Delay">
+<a class="viewcode-back" href="../../api/reactives.html#stpr.reactive.Delay">[docs]</a>
+<span class="k">class</span> <span class="nc">Delay</span><span class="p">(</span><span class="n">Reactive</span><span class="p">[</span><span class="n">T</span><span class="p">]):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Allows delaying a reactive update.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="n">Reactive</span><span class="p">[</span><span class="n">T</span><span class="p">],</span> <span class="n">time</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructs a new `Delay` instance.</span>
+
+<span class="sd">        This reactive will receive the same updates as the source reactive. However, each update</span>
+<span class="sd">        will happen `time` seconds after the source reactive was updated.</span>
+
+<span class="sd">        :param source: A source reactive to follow.</span>
+<span class="sd">        :param time: The delay, in seconds.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">time</span> <span class="o">=</span> <span class="n">time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">r</span> <span class="o">=</span> <span class="n">source</span>
+
+<div class="viewcode-block" id="Delay.update">
+<a class="viewcode-back" href="../../api/reactives.html#stpr.reactive.Delay.update">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">stpr</span><span class="o">.</span><span class="n">_start</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_update_later</span><span class="p">(</span><span class="n">value</span><span class="p">))</span></div>
+
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_update_later</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">await</span> <span class="n">stpr</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">time</span><span class="p">)</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">r</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">value</span><span class="p">)</span></div>
+
+
+
+<span class="k">class</span> <span class="nc">_RunningArgs</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span> <span class="n">arg_names</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="n">f</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">arg_names</span> <span class="o">=</span> <span class="n">arg_names</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">undefined</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">args</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">def</span> <span class="nf">add_arg_r</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="n">UNDEFINED</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">undefined</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">ix</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ix</span>
+
+    <span class="k">def</span> <span class="nf">add_arg</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">arr_kwarg_r</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="n">UNDEFINED</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">undefined</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="k">def</span> <span class="nf">add_kwarg</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="k">def</span> <span class="nf">set_arg</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ix</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">undefined</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="n">ix</span><span class="p">]</span> <span class="o">==</span> <span class="n">UNDEFINED</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">undefined</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="n">ix</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">arg_names</span><span class="p">:</span>
+            <span class="n">_print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Reactive[</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="si">}</span><span class="s1">]: set_arg(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">arg_names</span><span class="p">[</span><span class="n">ix</span><span class="p">]</span><span class="si">}</span><span class="s1"> = </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s1">), &#39;</span>
+                   <span class="sa">f</span><span class="s1">&#39;undef: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">undefined</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">Color</span><span class="o">.</span><span class="n">BRIGHT_WHITE</span><span class="p">,</span> <span class="n">background</span><span class="o">=</span><span class="n">Color</span><span class="o">.</span><span class="n">RED</span><span class="p">)</span>
+            <span class="n">_print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Reactive[</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="si">}</span><span class="s1">]: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_arg_vals</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">Color</span><span class="o">.</span><span class="n">BRIGHT_WHITE</span><span class="p">,</span>
+                   <span class="n">background</span><span class="o">=</span><span class="n">Color</span><span class="o">.</span><span class="n">RED</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">undefined</span> <span class="o">==</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">set_kwarg</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">undefined</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">==</span> <span class="n">UNDEFINED</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">undefined</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">arg_names</span><span class="p">:</span>
+            <span class="n">_print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Reactive[</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="si">}</span><span class="s1">]: set_arg(</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s1">=</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s1">), &#39;</span>
+                   <span class="sa">f</span><span class="s1">&#39;undef: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">undefined</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">Color</span><span class="o">.</span><span class="n">BRIGHT_WHITE</span><span class="p">,</span> <span class="n">background</span><span class="o">=</span><span class="n">Color</span><span class="o">.</span><span class="n">RED</span><span class="p">)</span>
+            <span class="n">_print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Reactive[</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="si">}</span><span class="s1">]: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_arg_vals</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">Color</span><span class="o">.</span><span class="n">BRIGHT_WHITE</span><span class="p">,</span>
+                   <span class="n">background</span><span class="o">=</span><span class="n">Color</span><span class="o">.</span><span class="n">RED</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">undefined</span> <span class="o">==</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">_arg_vals</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="k">for</span> <span class="n">ix</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">)):</span>
+            <span class="n">s</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">arg_names</span><span class="p">[</span><span class="n">ix</span><span class="p">]</span><span class="si">}</span><span class="s1"> = </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="n">ix</span><span class="p">]</span><span class="si">}</span><span class="s1">, &#39;</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">s</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s1"> = </span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s1">, &#39;</span>
+        <span class="k">return</span> <span class="n">s</span>
+
+
+<div class="viewcode-block" id="fn">
+<a class="viewcode-back" href="../../api/reactives.html#stpr.reactive.fn">[docs]</a>
+<span class="k">def</span> <span class="nf">fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">trace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A decorator that makes a function reactive.</span>
+
+<span class="sd">    The decorated function will become reactive for any args (or kwargs) that are reactive. That is,</span>
+<span class="sd">    whenever any of its reactive arguments are updated, and if all other reactive arguments have a</span>
+<span class="sd">    value, it will be invoked. If the function returns a value, it will be wrapped in a `Reactive`</span>
+<span class="sd">    and any invocation of the decorated function will update the returned reactive. All arguments</span>
+<span class="sd">    that are not an instance of `Reactive` when the decorated function is invoked will be passed</span>
+<span class="sd">    as-is to every reactive invocation of the function:</span>
+
+<span class="sd">    .. code-block:: Python</span>
+
+<span class="sd">        @stpr.reactive.fn</span>
+<span class="sd">        def f(a: int, b: int, c: int) -&gt; int:</span>
+<span class="sd">            return a + b - c</span>
+
+
+<span class="sd">        a = Reactive()</span>
+<span class="sd">        b = Reactive()</span>
+
+<span class="sd">        r = fn(a, b, 2)</span>
+
+<span class="sd">    In the above example, `fn` will be invoked every time `a` or `b` are updated. The third</span>
+<span class="sd">    parameter (`c`) will always be equal to `2`.</span>
+
+<span class="sd">    The decorated function is automatically processed as if decorated by :py:func:`stpr.fn`, so</span>
+<span class="sd">    :ref:`concurrency primitives &lt;concurrency-primitives&gt;` defined by Stpr can be used directly.</span>
+
+<span class="sd">    If the `trace` argument to the decorator is set to `True`, invocations of the decorated function</span>
+<span class="sd">    will be printed with details about the reactive that triggered the invocation.</span>
+
+<span class="sd">    :param trace: If set to `True`, print traces of the invocation of the decorated function.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">crt_frame</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">currentframe</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">trace</span><span class="p">:</span>
+            <span class="n">_print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Reactive[</span><span class="si">{</span><span class="n">f</span><span class="si">}</span><span class="s1">]: tracing enabled&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">Color</span><span class="o">.</span><span class="n">BRIGHT_WHITE</span><span class="p">,</span> <span class="n">background</span><span class="o">=</span><span class="n">Color</span><span class="o">.</span><span class="n">RED</span><span class="p">)</span>
+            <span class="n">arg_names</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getfullargspec</span><span class="p">(</span><span class="n">f</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">arg_names</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="n">stprfn</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">crt_frame</span><span class="o">=</span><span class="n">crt_frame</span><span class="p">)</span>
+
+        <span class="n">lock</span> <span class="o">=</span> <span class="n">Lock</span><span class="p">()</span>
+
+        <span class="n">ret</span> <span class="o">=</span> <span class="n">Reactive</span><span class="p">()</span>
+
+        <span class="k">async</span> <span class="k">def</span> <span class="nf">invoke</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">await</span> <span class="n">ret</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="k">await</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
+                <span class="n">traceback</span><span class="o">.</span><span class="n">print_exception</span><span class="p">(</span><span class="n">ex</span><span class="p">)</span>
+
+        <span class="k">async</span> <span class="k">def</span> <span class="nf">update_arg</span><span class="p">(</span><span class="n">running_args</span><span class="p">:</span> <span class="n">_RunningArgs</span><span class="p">,</span> <span class="n">ix</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">r</span><span class="p">:</span> <span class="n">Reactive</span><span class="p">,</span>
+                             <span class="n">value</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span> <span class="n">old</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">lock</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">running_args</span><span class="o">.</span><span class="n">set_arg</span><span class="p">(</span><span class="n">ix</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+                    <span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="n">running_args</span><span class="o">.</span><span class="n">args</span><span class="p">]</span>
+                    <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="o">**</span><span class="n">running_args</span><span class="o">.</span><span class="n">kwargs</span><span class="p">}</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">return</span>
+            <span class="k">if</span> <span class="n">trace</span><span class="p">:</span>
+                <span class="n">_print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Reactive[</span><span class="si">{</span><span class="n">f</span><span class="si">}</span><span class="s1">]: invoke due to </span><span class="si">{</span><span class="n">arg_names</span><span class="p">[</span><span class="n">ix</span><span class="p">]</span><span class="si">}</span><span class="s1"> -&gt; </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+                             <span class="n">color</span><span class="o">=</span><span class="n">Color</span><span class="o">.</span><span class="n">BRIGHT_WHITE</span><span class="p">,</span> <span class="n">background</span><span class="o">=</span><span class="n">Color</span><span class="o">.</span><span class="n">RED</span><span class="p">)</span>
+            <span class="k">await</span> <span class="n">invoke</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="k">async</span> <span class="k">def</span> <span class="nf">update_kwarg</span><span class="p">(</span><span class="n">running_args</span><span class="p">:</span> <span class="n">_RunningArgs</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">r</span><span class="p">:</span> <span class="n">Reactive</span><span class="p">,</span>
+                               <span class="n">value</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span> <span class="n">old</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">lock</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">running_args</span><span class="o">.</span><span class="n">set_kwarg</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+                    <span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="n">running_args</span><span class="o">.</span><span class="n">args</span><span class="p">]</span>
+                    <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="o">**</span><span class="n">running_args</span><span class="o">.</span><span class="n">kwargs</span><span class="p">}</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">return</span>
+            <span class="k">if</span> <span class="n">trace</span><span class="p">:</span>
+                <span class="n">_print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Reactive[</span><span class="si">{</span><span class="n">f</span><span class="si">}</span><span class="s1">]: invoke due to </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s1"> -&gt; </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+                             <span class="n">color</span><span class="o">=</span><span class="n">Color</span><span class="o">.</span><span class="n">BRIGHT_WHITE</span><span class="p">,</span> <span class="n">background</span><span class="o">=</span><span class="n">Color</span><span class="o">.</span><span class="n">RED</span><span class="p">)</span>
+            <span class="k">await</span> <span class="n">invoke</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="n">running_args</span> <span class="o">=</span> <span class="n">_RunningArgs</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">arg_names</span><span class="p">)</span>
+            <span class="k">with</span> <span class="n">lock</span><span class="p">:</span>
+                <span class="c1"># this runs once when the pipeline is set up</span>
+                <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">Reactive</span><span class="p">):</span>
+                        <span class="n">ix</span> <span class="o">=</span> <span class="n">running_args</span><span class="o">.</span><span class="n">add_arg_r</span><span class="p">(</span><span class="n">arg</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+                        <span class="n">arg</span><span class="o">.</span><span class="n">add_callback</span><span class="p">(</span><span class="n">async_partial</span><span class="p">(</span><span class="n">update_arg</span><span class="p">,</span> <span class="n">running_args</span><span class="p">,</span> <span class="n">ix</span><span class="p">))</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">running_args</span><span class="o">.</span><span class="n">add_arg</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+
+                <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">Reactive</span><span class="p">):</span>
+                        <span class="n">running_args</span><span class="o">.</span><span class="n">add_kwarg_r</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+                        <span class="n">arg</span><span class="o">.</span><span class="n">add_callback</span><span class="p">(</span><span class="n">async_partial</span><span class="p">(</span><span class="n">update_kwarg</span><span class="p">,</span> <span class="n">running_args</span><span class="p">,</span> <span class="n">key</span><span class="p">))</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">running_args</span><span class="o">.</span><span class="n">add_kwarg</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">running_args</span><span class="o">.</span><span class="n">undefined</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">start</span><span class="p">(</span><span class="n">invoke</span><span class="p">(</span><span class="o">*</span><span class="n">running_args</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">running_args</span><span class="o">.</span><span class="n">kwargs</span><span class="p">))</span>
+
+            <span class="k">return</span> <span class="n">ret</span>
+
+        <span class="k">return</span> <span class="n">wrapper</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">()</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">inner</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">inner</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span></div>
+
+</pre></div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        <div id="right_sidebar">
+            <h4>Page contents</h4>
+            <div class="page_toc">
+                
+            </div>
+        </div>
+    
+
+      <div class="clearer"></div>
+    </div>
+    <div class="button_nav_wrapper">
+        <div class="button_nav">
+            <div class="left">
+                
+            </div>
+
+            <div class="right">
+                
+            </div>
+        </div>
+    </div>
+
+        
+
+  </body>
+</html>

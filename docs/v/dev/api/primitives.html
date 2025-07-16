@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Concurrency Primitives &#8212; Stpr</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic_mod.css?v=9b2032db" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css?v=b283b5c5" />
+    <link rel="stylesheet" type="text/css" href="../_static/fixes.css?v=40ebb8c7" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Radio+Canada:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+
+    
+    <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/main.js?v=6c1a4791"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/petite-vue.js"></script>
+
+    <link rel="canonical" href="/stpr/api/primitives.html" />
+    <link rel="icon" href="../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Stpr Types" href="types.html" />
+    <link rel="prev" title="Tutorial" href="../tutorial.html" /> 
+  </head><body class="page-api/primitives docpage" data-dark_mode_code_blocks="true">
+    <div id="top_nav">
+        
+
+        <nav>
+            
+                
+            
+
+            <h1><a href="/stpr" title="Go to homepage">Stpr</a></h1>
+
+
+            <ul class="top-menu">
+    <li><a href="/stpr/install.html" class="not-active">Install</a></li>
+    <li><a href="/stpr/docs/index.html" class="active">Documentation</a></li>
+</ul>
+                <p class="mobile_search_link">
+                    <a href="../search.html" title="Search">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65 64" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2">
+                            <path d="M14.873 40.009c-2.315-3.943-3.642-8.532-3.642-13.429C11.231 11.91 23.141 0 37.811 0s26.58 11.91 26.58 26.58-11.91 26.58-26.58 26.58a26.44 26.44 0 0 1-14.277-4.161L9.739 62.794a3.12 3.12 0 0 1-4.413 0L.913 58.382c-1.217-1.218-1.217-3.196 0-4.413l13.96-13.96zM37.811 8.054c10.225 0 18.526 8.301 18.526 18.526s-8.301 18.526-18.526 18.526-18.526-8.301-18.526-18.526S27.586 8.054 37.811 8.054z" fill="#fff" />
+                        </svg>
+                    </a>
+                </p>
+            
+                <div class="searchbox_wrapper">
+                    
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+                </div>
+            
+
+            <a href="https://github.com/hategan/stpr" class="gh">GitHub</a>
+        </nav>
+    </div>
+
+        
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Concurrency Primitives</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="types.html">Stpr Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions.html">Stpr Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reactives.html">Reactive Variables and Functions</a></li>
+</ul>
+
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="../tutorial.html"
+                          title="previous chapter">Tutorial</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="types.html"
+                          title="next chapter">Stpr Types</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/api/primitives.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+
+    
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="concurrency-primitives">
+<span id="id1"></span><h1>Concurrency Primitives<a class="headerlink" href="#concurrency-primitives" title="Link to this heading">¶</a></h1>
+<p>The main starting point in using Stpr is the <a class="reference internal" href="#stpr.fn" title="stpr.fn"><code class="xref py py-func docutils literal notranslate"><span class="pre">stpr.fn()</span></code></a> decorator which
+transforms a function definition and allows it to use the Stpr concurrency
+constructs.</p>
+<section id="the-stpr-fn-decorator">
+<h2>The <cite>stpr.fn</cite> Decorator<a class="headerlink" href="#the-stpr-fn-decorator" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="stpr.fn">
+<span class="sig-name descname"><span class="pre">fn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stpr/transformer.html#fn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stpr.fn" title="Link to this definition">¶</a></dt>
+<dd><p>Decorator for Stpr functions.</p>
+<p>This decorator is used to enable Stpr functionality in a function or method. Specifically:</p>
+<ul class="simple">
+<li><p>The decorated function becomes an async function (i.e., it behaves as if defined with
+<code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">def</span></code>.</p></li>
+<li><p>The Stpr concurrency primitives become available in that function.</p></li>
+<li><p>Calls to other async functions or methods from the body of the decorated function will
+automatically be <code class="docutils literal notranslate"><span class="pre">await</span></code>-ed. This includes calls to other <code class="docutils literal notranslate"><span class="pre">stpr.fn</span></code> decorated functions.</p></li>
+<li><p>When an async iterator is used in a <code class="docutils literal notranslate"><span class="pre">for</span></code> statement, the <code class="docutils literal notranslate"><span class="pre">for</span></code> statement is
+transformed to an <code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">for</span></code>.</p></li>
+<li><p>When an async context manager is used in a <code class="docutils literal notranslate"><span class="pre">with</span></code> statement, the <code class="docutils literal notranslate"><span class="pre">with</span></code> statement
+becomes an <code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">with</span></code> statement.</p></li>
+<li><p>Calls to synchronous functions/methods are automatically executed in a thread pool. Stpr
+may, heuristically, choose to execute some simple functions inside the asyncio event loop
+to reduce the overhead of submitting to a thread pool. Multiple sequential synchronous
+function/method invocations are generally merged into a single task to be submitted to a
+thread pool.</p></li>
+</ul>
+<p>Stpr does most of its analysis statically. However, it is not always possible to fully determine
+the type of a variable or parameter statically. When Stpr encounters such a situation, it wraps
+calls into utility functions that dynamically route execution to either the async event loop or
+to a thread pool.</p>
+</dd></dl>
+
+</section>
+<section id="id2">
+<h2>Concurrency Primitives<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<dl class="py class stprtr">
+<dt class="sig sig-object py" id="stpr.seq">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">seq</span></span><a class="reference internal" href="../_modules/stpr/transformer.html#seq"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stpr.seq" title="Link to this definition">¶</a></dt>
+<dd><p>Runs statements sequentially.</p>
+<p>Syntax:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">stpr</span><span class="o">.</span><span class="n">seq</span><span class="p">:</span>
+    <span class="n">stmt1</span>
+    <span class="n">stmt2</span>
+    <span class="o">...</span>
+    <span class="n">stmtN</span>
+</pre></div>
+</div>
+<p>Runs statements in sequence: <code class="docutils literal notranslate"><span class="pre">stmt1</span></code> will be run first, followed by <code class="docutils literal notranslate"><span class="pre">stmt2</span></code> and so on.</p>
+<figure class="align-center">
+<p class="plantuml">
+<object data="../_images/plantuml-f3f81caddaa9fa9dace293fdbcd15ff027c3e02d.svg" type="image/svg+xml" style="width:102px;height:350px;background:#FFFFFF;">
+<img src="../_images/plantuml-f3f81caddaa9fa9dace293fdbcd15ff027c3e02d.png" alt="&#64;startuml
+&lt;style&gt;
+    activityDiagram {
+        .blank {
+            LineColor #ffffff
+            BackgroundColor #ffffff
+        }
+    }
+&lt;/style&gt;
+start
+fork
+    :stmt1;
+    :stmt2;
+    :...; &lt;&lt;blank&gt;&gt;
+    :stmtN;
+end fork
+stop
+&#64;enduml"/>
+
+</object></p>
+</figure>
+<p>When an exception is raised by the currently executing statement, the execution of the remaining
+statements is aborted and <code class="docutils literal notranslate"><span class="pre">stpr.seq</span></code> re-raises the exception raised by the statement.</p>
+<p>Running statements sequentially is the default in a Stpr function so including a <code class="docutils literal notranslate"><span class="pre">stpr.seq</span></code>
+is redundant if all statements in a function are to be run sequentially. The typical usage
+scenario of <code class="docutils literal notranslate"><span class="pre">stpr.seq</span></code> is when it is nested inside <a class="reference internal" href="#stpr.parallel" title="stpr.parallel"><code class="xref py py-func docutils literal notranslate"><span class="pre">stpr.parallel()</span></code></a> or other similar
+concurrency primitives.</p>
+</dd></dl>
+
+<dl class="py class stprtr">
+<dt class="sig sig-object py" id="stpr.parallel">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parallel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stpr/transformer.html#parallel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stpr.parallel" title="Link to this definition">¶</a></dt>
+<dd><p>Runs statements in parallel.</p>
+<p>Syntax:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">stpr</span><span class="o">.</span><span class="n">parallel</span><span class="p">:</span>
+    <span class="n">stmt1</span>
+    <span class="n">stmt2</span>
+    <span class="o">...</span>
+    <span class="n">stmtN</span>
+</pre></div>
+</div>
+<p>Runs <code class="docutils literal notranslate"><span class="pre">stmt1</span></code>, <code class="docutils literal notranslate"><span class="pre">stmt2</span></code>, …, and <code class="docutils literal notranslate"><span class="pre">stmtN</span></code> in parallel and waits for all of them to complete.</p>
+<figure class="align-center">
+<p class="plantuml">
+<object data="../_images/plantuml-a21bf6835727f7e5c6406e71611f9467982e6f20.svg" type="image/svg+xml" style="width:287px;height:188px;background:#FFFFFF;">
+<img src="../_images/plantuml-a21bf6835727f7e5c6406e71611f9467982e6f20.png" alt="&#64;startuml
+&lt;style&gt;
+    activityDiagram {
+        .blank {
+            LineColor #ffffff
+            BackgroundColor #ffffff
+        }
+    }
+&lt;/style&gt;
+start
+fork
+    :stmt1;
+fork again
+    :stmt2;
+fork again
+    -[#white]-&gt;
+    :...; &lt;&lt;blank&gt;&gt;
+    -[#white]-&gt;
+fork again
+    :stmtN;
+end fork
+stop
+&#64;enduml"/>
+
+</object></p>
+</figure>
+<p>If one or more statements raise an exception, the remaining running statements are canceled and
+the first detected exception is re-raised. This is in contrast with
+<a class="reference external" href="https://docs.python.org/3/library/asyncio-task.html#asyncio.TaskGroup" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">asyncio.TaskGroup</span></code></a>, which raises an exception that combines all detected exceptions
+from its tasks.</p>
+<p>An alternative syntax is to use <code class="docutils literal notranslate"><span class="pre">stpr.parallel</span></code> as a function:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">rN</span> <span class="o">=</span> <span class="n">stpr</span><span class="o">.</span><span class="n">parallel</span><span class="p">(</span><span class="n">f1</span><span class="p">(),</span> <span class="n">f2</span><span class="p">(),</span> <span class="o">...</span><span class="p">,</span> <span class="n">fN</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>In this case, <code class="docutils literal notranslate"><span class="pre">f1</span></code>, <code class="docutils literal notranslate"><span class="pre">f2</span></code>, …, and <code class="docutils literal notranslate"><span class="pre">fN</span></code> will be executed in parallel and their return
+values assigned, respectively, to <code class="docutils literal notranslate"><span class="pre">r1</span></code>, <code class="docutils literal notranslate"><span class="pre">r2</span></code>, …, and <code class="docutils literal notranslate"><span class="pre">rN</span></code>.</p>
+</dd></dl>
+
+<dl class="py class stprtr">
+<dt class="sig sig-object py" id="stpr.parallelFor">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parallelFor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">it</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Iterable" title="(in Python v3.13)"><span class="pre">Iterable</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.13)"><span class="pre">object</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stpr/transformer.html#parallelFor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stpr.parallelFor" title="Link to this definition">¶</a></dt>
+<dd><p>Iterates over a sequence in parallel.</p>
+<p>Syntax:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">stpr</span><span class="o">.</span><span class="n">parallelFor</span><span class="p">(</span><span class="n">iterable</span><span class="p">)</span> <span class="k">as</span> <span class="n">var</span><span class="p">:</span>
+    <span class="n">stmt1</span>
+    <span class="n">stmt2</span>
+    <span class="o">...</span>
+    <span class="n">stmtN</span>
+</pre></div>
+</div>
+<p>For each value produced by the <code class="docutils literal notranslate"><span class="pre">iterable</span></code>, <code class="docutils literal notranslate"><span class="pre">var</span></code> is assigned that value and the statements
+<code class="docutils literal notranslate"><span class="pre">stmt1</span></code>, <code class="docutils literal notranslate"><span class="pre">stmt2</span></code>, …, and <code class="docutils literal notranslate"><span class="pre">stmtN</span></code> are executed sequentially. The execution of each
+iteration is started as soon as the iterable produces the corresponding value. If the
+<code class="docutils literal notranslate"><span class="pre">iterable</span></code> produces all its values at once and there is a total of <code class="docutils literal notranslate"><span class="pre">M</span></code> values, the
+following diagram applies:</p>
+<figure class="align-center">
+<p class="plantuml">
+<object data="../_images/plantuml-440ee746035829d6c01f32a914a88ba036c35965.svg" type="image/svg+xml" style="width:490px;height:404px;background:#FFFFFF;">
+<img src="../_images/plantuml-440ee746035829d6c01f32a914a88ba036c35965.png" alt="&#64;startuml
+&lt;style&gt;
+    activityDiagram {
+        .blank {
+            LineColor #ffffff
+            BackgroundColor #ffffff
+        }
+    }
+&lt;/style&gt;
+start
+fork
+    :var = iterable[0];
+    :stmt1;
+    :stmt2;
+    :...; &lt;&lt;blank&gt;&gt;
+    :stmtN;
+fork again
+    :var = iterable[1];
+    :stmt1;
+    :stmt2;
+    :...; &lt;&lt;blank&gt;&gt;
+    :stmtN;
+fork again
+    -[#white]-&gt;
+    :...; &lt;&lt;blank&gt;&gt;
+    -[#white]-&gt;
+fork again
+    :var = iterable[M - 1];
+    :stmt1;
+    :stmt2;
+    :...; &lt;&lt;blank&gt;&gt;
+    :stmtN;
+end fork
+stop
+&#64;enduml"/>
+
+</object></p>
+</figure>
+<p>If any of the statements raise an exception in any of the iterations, <code class="docutils literal notranslate"><span class="pre">stpr.parallelFor</span></code>
+cancels all running iterations, stops processing values from <code class="docutils literal notranslate"><span class="pre">iterator</span></code>, and re-raises that
+exception.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>it</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Iterable" title="(in Python v3.13)"><em>Iterable</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.13)"><em>object</em></a><em>]</em>) – The iterable to iterate over.</p></li>
+<li><p><strong>maxp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> | </em><em>None</em>) – If specified, at most <code class="docutils literal notranslate"><span class="pre">maxp</span></code> parallel iterations will be active at any given
+time.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class stprtr">
+<dt class="sig sig-object py" id="stpr.fork">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fork</span></span><a class="reference internal" href="../_modules/stpr/transformer.html#fork"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stpr.fork" title="Link to this definition">¶</a></dt>
+<dd><p>Runs a statement asynchronously.</p>
+</dd></dl>
+
+<dl class="py class stprtr">
+<dt class="sig sig-object py" id="stpr.race">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">race</span></span><a class="reference internal" href="../_modules/stpr/transformer.html#race"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stpr.race" title="Link to this definition">¶</a></dt>
+<dd><p>Races a set of functions.</p>
+<p>Syntax:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="n">stpr</span><span class="o">.</span><span class="n">race</span><span class="p">(</span><span class="n">f1</span><span class="p">(),</span> <span class="n">f2</span><span class="p">(),</span> <span class="o">...</span><span class="p">,</span> <span class="n">fN</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Functions <code class="docutils literal notranslate"><span class="pre">f1</span></code>, <code class="docutils literal notranslate"><span class="pre">f2</span></code>, …, and <code class="docutils literal notranslate"><span class="pre">fN</span></code> are executed in parallel. The first function to
+complete successfully wins the race and its return value is returned by <code class="docutils literal notranslate"><span class="pre">stpr.race</span></code>. The
+execution of the remaining functions is then canceled. If any function raises an exception
+after the first function completes, the exception is ignored. If one or more functions raise an
+exception before any function completes successfully, <code class="docutils literal notranslate"><span class="pre">stpr.race</span></code> re-raises that exception
+and cancels the execution of the remaining functions.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="stpr.Lock">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Lock</span></span><a class="reference internal" href="../_modules/stpr/types.html#Lock"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stpr.Lock" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>A thread and asyncio safe lock.</p>
+<p>It is recommended that the lock be used as a context manager. Synchronous functions should
+use the synchronous context manager protocol (i.e., <cite>with lock</cite>) whereas coroutines should
+use the asynchronous context manager protocol (i.e., <cite>async with lock</cite>). If used in a <cite>stpr</cite>
+function, the asynchronous protocol will be used automatically.</p>
+<p>Alternatively, the functions <a class="reference internal" href="#stpr.Lock.acquire_sync" title="stpr.Lock.acquire_sync"><code class="xref py py-meth docutils literal notranslate"><span class="pre">acquire_sync()</span></code></a>, <a class="reference internal" href="#stpr.Lock.release_sync" title="stpr.Lock.release_sync"><code class="xref py py-meth docutils literal notranslate"><span class="pre">release_sync()</span></code></a>,
+<a class="reference internal" href="#stpr.Lock.acquire_async" title="stpr.Lock.acquire_async"><code class="xref py py-func docutils literal notranslate"><span class="pre">acquire_async()</span></code></a>, and <a class="reference internal" href="#stpr.Lock.release_async" title="stpr.Lock.release_async"><code class="xref py py-func docutils literal notranslate"><span class="pre">release_async()</span></code></a> can be used explicitly.</p>
+<p>At this time, this lock is only re-entrant if re-entered either in the same thread or in an
+async context. It is not re-entrant if invoked from both a sync and async context. Consider
+the following example:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">lock</span> <span class="o">=</span> <span class="n">stpr</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">sync_function</span><span class="p">():</span>
+    <span class="k">with</span> <span class="n">lock</span><span class="p">:</span>
+        <span class="o">...</span>
+
+<span class="nd">@stpr</span><span class="o">.</span><span class="n">fn</span>
+<span class="k">def</span> <span class="nf">async_function</span><span class="p">():</span>
+    <span class="k">with</span> <span class="n">lock</span><span class="p">:</span>
+        <span class="n">sync_function</span><span class="p">()</span>
+
+<span class="n">stpr</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">async_function</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In the above case, <cite>sync_function</cite> is executed in a thread pool. This effectively causes
+<cite>sync_function</cite> to run in a thread that is different from the thread that executes the
+async loop and in which <cite>async_function</cite> is running. In this case, re-entrance is not easily
+distinguishable from the lock being acquired in two different threads.</p>
+<p>Create a new <cite>Lock</cite> instance.</p>
+<p><a class="reference internal" href="#stpr.Lock.acquire_sync" title="stpr.Lock.acquire_sync"><code class="xref py py-meth docutils literal notranslate"><span class="pre">acquire_sync()</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="stpr.Lock.acquire_async">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">acquire_async</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/stpr/types.html#Lock.acquire_async"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stpr.Lock.acquire_async" title="Link to this definition">¶</a></dt>
+<dd><p>Acquire the lock from an async context.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>None</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="stpr.Lock.acquire_sync">
+<span class="sig-name descname"><span class="pre">acquire_sync</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/stpr/types.html#Lock.acquire_sync"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stpr.Lock.acquire_sync" title="Link to this definition">¶</a></dt>
+<dd><p>Acquire the lock from a synchronous context.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>None</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="stpr.Lock.release_async">
+<span class="sig-name descname"><span class="pre">release_async</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/stpr/types.html#Lock.release_async"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stpr.Lock.release_async" title="Link to this definition">¶</a></dt>
+<dd><p>Release the lock from an asynchronous context.</p>
+<p>The lock must have previously been acquired using <a class="reference internal" href="#stpr.Lock.acquire_async" title="stpr.Lock.acquire_async"><code class="xref py py-func docutils literal notranslate"><span class="pre">acquire_async()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>None</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="stpr.Lock.release_sync">
+<span class="sig-name descname"><span class="pre">release_sync</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/stpr/types.html#Lock.release_sync"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stpr.Lock.release_sync" title="Link to this definition">¶</a></dt>
+<dd><p>Release the lock from a synchronous context.</p>
+<p>The lock must have previously been acquired using <a class="reference internal" href="#stpr.Lock.acquire_sync" title="stpr.Lock.acquire_sync"><code class="xref py py-func docutils literal notranslate"><span class="pre">acquire_sync()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>None</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="stpr.Throttle">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Throttle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stpr/types.html#Throttle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stpr.Throttle" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Represents a throttle.</p>
+<p>A throttle is a mechanism that places an upper limit on the number of concurrent operations that
+can occur at a given point in the code. The following code shows an example of throttle use:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">throttle</span> <span class="o">=</span> <span class="n">Throttle</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="nd">@stpr</span><span class="o">.</span><span class="n">fn</span>
+<span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="n">i</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">throttle</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;start </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">stpr</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;end </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="nd">@stpr</span><span class="o">.</span><span class="n">fn</span>
+<span class="k">def</span> <span class="nf">throttle_example</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">stpr</span><span class="o">.</span><span class="n">parallelFor</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span> <span class="k">as</span> <span class="n">i</span><span class="p">:</span>
+        <span class="n">process</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In this example, at most 5 concurrent instances of the <cite>with</cite> block in the <cite>process</cite> function
+will be allowed.</p>
+<p>At this time, <cite>Throttle</cite> only implements the async context manager. This is automatically
+used in <cite>stpr</cite> functions when using the <cite>with</cite> keyword.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>n</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Represents the maximum number of simultaneous parallel threads that this throttle
+will allow.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        <div id="right_sidebar">
+            <h4>Page contents</h4>
+            <div class="page_toc">
+                <ul>
+<li><a class="reference internal" href="#">Concurrency Primitives</a><ul>
+<li><a class="reference internal" href="#the-stpr-fn-decorator">The <cite>stpr.fn</cite> Decorator</a><ul>
+<li><a class="reference internal" href="#stpr.fn"><code class="docutils literal notranslate"><span class="pre">fn()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id2">Concurrency Primitives</a><ul>
+<li><a class="reference internal" href="#stpr.seq"><code class="docutils literal notranslate"><span class="pre">seq</span></code></a></li>
+<li><a class="reference internal" href="#stpr.parallel"><code class="docutils literal notranslate"><span class="pre">parallel</span></code></a></li>
+<li><a class="reference internal" href="#stpr.parallelFor"><code class="docutils literal notranslate"><span class="pre">parallelFor</span></code></a></li>
+<li><a class="reference internal" href="#stpr.fork"><code class="docutils literal notranslate"><span class="pre">fork</span></code></a></li>
+<li><a class="reference internal" href="#stpr.race"><code class="docutils literal notranslate"><span class="pre">race</span></code></a></li>
+<li><a class="reference internal" href="#stpr.Lock"><code class="docutils literal notranslate"><span class="pre">Lock</span></code></a></li>
+<li><a class="reference internal" href="#stpr.Throttle"><code class="docutils literal notranslate"><span class="pre">Throttle</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    
+
+      <div class="clearer"></div>
+    </div>
+    <div class="button_nav_wrapper">
+        <div class="button_nav">
+            <div class="left">
+                
+                <a href="../tutorial.html">
+                    <span class="icon">&lt;</span><span>Tutorial</span></a>
+                
+            </div>
+
+            <div class="right">
+                
+                    <a href="types.html"><span>Stpr Types</span><span class="icon">&gt;</span></a>
+                
+            </div>
+        </div>
+    </div>
+
+        
+
+  </body>
+</html>

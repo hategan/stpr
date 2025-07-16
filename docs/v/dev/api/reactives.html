@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Reactive Variables and Functions &#8212; Stpr</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic_mod.css?v=9b2032db" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css?v=b283b5c5" />
+    <link rel="stylesheet" type="text/css" href="../_static/fixes.css?v=40ebb8c7" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Radio+Canada:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+
+    
+    <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/main.js?v=6c1a4791"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/petite-vue.js"></script>
+
+    <link rel="canonical" href="/stpr/api/reactives.html" />
+    <link rel="icon" href="../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Stpr Functions" href="functions.html" /> 
+  </head><body class="page-api/reactives docpage" data-dark_mode_code_blocks="true">
+    <div id="top_nav">
+        
+
+        <nav>
+            
+                
+            
+
+            <h1><a href="/stpr" title="Go to homepage">Stpr</a></h1>
+
+
+            <ul class="top-menu">
+    <li><a href="/stpr/install.html" class="not-active">Install</a></li>
+    <li><a href="/stpr/docs/index.html" class="active">Documentation</a></li>
+</ul>
+                <p class="mobile_search_link">
+                    <a href="../search.html" title="Search">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65 64" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2">
+                            <path d="M14.873 40.009c-2.315-3.943-3.642-8.532-3.642-13.429C11.231 11.91 23.141 0 37.811 0s26.58 11.91 26.58 26.58-11.91 26.58-26.58 26.58a26.44 26.44 0 0 1-14.277-4.161L9.739 62.794a3.12 3.12 0 0 1-4.413 0L.913 58.382c-1.217-1.218-1.217-3.196 0-4.413l13.96-13.96zM37.811 8.054c10.225 0 18.526 8.301 18.526 18.526s-8.301 18.526-18.526 18.526-18.526-8.301-18.526-18.526S27.586 8.054 37.811 8.054z" fill="#fff" />
+                        </svg>
+                    </a>
+                </p>
+            
+                <div class="searchbox_wrapper">
+                    
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+                </div>
+            
+
+            <a href="https://github.com/hategan/stpr" class="gh">GitHub</a>
+        </nav>
+    </div>
+
+        
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="primitives.html">Concurrency Primitives</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="types.html">Stpr Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions.html">Stpr Functions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Reactive Variables and Functions</a></li>
+</ul>
+
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="functions.html"
+                          title="previous chapter">Stpr Functions</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/api/reactives.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+
+    
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-stpr.reactive">
+<span id="reactive-variables-and-functions"></span><span id="reactives"></span><h1>Reactive Variables and Functions<a class="headerlink" href="#module-stpr.reactive" title="Link to this heading">¶</a></h1>
+<p>This module implements reactive values and functions. Reactive functions automatically update their
+results whenever their inputs change. A basic usage scenario is when one wants to compute a
+function on some data that is periodically updated:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nd">@stpr</span><span class="o">.</span><span class="n">reactive</span><span class="o">.</span><span class="n">fn</span>
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="nd">@stpr</span><span class="o">.</span><span class="n">fn</span>
+<span class="n">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">x</span><span class="p">:</span> <span class="n">Reactive</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="n">Reactive</span><span class="p">()</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="n">stpr</span><span class="o">.</span><span class="n">parallel</span><span class="p">:</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">old</span><span class="p">)</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">updates</span><span class="p">():</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Result updated from </span><span class="si">{</span><span class="n">old</span><span class="si">}</span><span class="s1"> to </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">]:</span>
+            <span class="n">x</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="n">stpr</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+
+<span class="n">stpr</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py" id="stpr.reactive.fn">
+<span class="sig-name descname"><span class="pre">fn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stpr/reactive.html#fn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stpr.reactive.fn" title="Link to this definition">¶</a></dt>
+<dd><p>A decorator that makes a function reactive.</p>
+<p>The decorated function will become reactive for any args (or kwargs) that are reactive. That is,
+whenever any of its reactive arguments are updated, and if all other reactive arguments have a
+value, it will be invoked. If the function returns a value, it will be wrapped in a <cite>Reactive</cite>
+and any invocation of the decorated function will update the returned reactive. All arguments
+that are not an instance of <cite>Reactive</cite> when the decorated function is invoked will be passed
+as-is to every reactive invocation of the function:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nd">@stpr</span><span class="o">.</span><span class="n">reactive</span><span class="o">.</span><span class="n">fn</span>
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">c</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">-</span> <span class="n">c</span>
+
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">Reactive</span><span class="p">()</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">Reactive</span><span class="p">()</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In the above example, <cite>fn</cite> will be invoked every time <cite>a</cite> or <cite>b</cite> are updated. The third
+parameter (<cite>c</cite>) will always be equal to <cite>2</cite>.</p>
+<p>The decorated function is automatically processed as if decorated by <a class="reference internal" href="primitives.html#stpr.fn" title="stpr.fn"><code class="xref py py-func docutils literal notranslate"><span class="pre">stpr.fn()</span></code></a>, so
+<a class="reference internal" href="primitives.html#concurrency-primitives"><span class="std std-ref">concurrency primitives</span></a> defined by Stpr can be used directly.</p>
+<p>If the <cite>trace</cite> argument to the decorator is set to <cite>True</cite>, invocations of the decorated function
+will be printed with details about the reactive that triggered the invocation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>trace</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – If set to <cite>True</cite>, print traces of the invocation of the decorated function.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="stpr.reactive.Reactive">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Reactive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="types.html#stpr.types.T" title="stpr.types.T"><span class="pre">T</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#stpr.reactive.Undefined" title="stpr.reactive.Undefined"><span class="pre">Undefined</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">UNDEFINED</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stpr/reactive.html#Reactive"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stpr.reactive.Reactive" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Generic" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code></a>[<a class="reference internal" href="types.html#stpr.types.T" title="stpr.types.T"><code class="xref py py-obj docutils literal notranslate"><span class="pre">T</span></code></a>]</p>
+<p>Implements a reactive.</p>
+<p>A reactive is a wrapper around other python objects that can be used to implement functions
+whose results get updated automatically when a reactive parameter changes. The main mechanism
+of updating a <cite>Reactive</cite> is by calling the <a class="reference internal" href="#stpr.reactive.Reactive.update" title="stpr.reactive.Reactive.update"><code class="xref py py-func docutils literal notranslate"><span class="pre">Reactive.update()</span></code></a> method.</p>
+<p>The base <cite>Reactive</cite> class overrides most operators to properly handle reactivity. For example:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">Reactive</span><span class="p">()</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">Reactive</span><span class="p">()</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>  <span class="c1"># r is a reactive that is updated whenever a or b are.</span>
+</pre></div>
+</div>
+<p>Creates a new reactive and optionally initializes it.</p>
+<p>By default, a new reactive will have a value of <a class="reference internal" href="#stpr.reactive.UNDEFINED" title="stpr.reactive.UNDEFINED"><code class="xref py py-const docutils literal notranslate"><span class="pre">UNDEFINED</span></code></a>. A reactive with
+an <a class="reference internal" href="#stpr.reactive.UNDEFINED" title="stpr.reactive.UNDEFINED"><code class="xref py py-const docutils literal notranslate"><span class="pre">UNDEFINED</span></code></a> value prevents reactive functions that depend on it from being
+invoked. Alternatively, the reactive can be initialized with a value using the <code class="docutils literal notranslate"><span class="pre">value</span></code>
+parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<a class="reference internal" href="types.html#stpr.types.T" title="stpr.types.T"><em>T</em></a><em> | </em><a class="reference internal" href="#stpr.reactive.Undefined" title="stpr.reactive.Undefined"><em>Undefined</em></a>) – A value to initialize this <cite>Reactive</cite> with.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="stpr.reactive.Reactive.add_callback">
+<span class="sig-name descname"><span class="pre">add_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cb</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.13)"><span class="pre">Callable</span></a><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#stpr.reactive.Reactive" title="stpr.reactive.Reactive"><span class="pre">Reactive</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="types.html#stpr.types.T" title="stpr.types.T"><span class="pre">T</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="types.html#stpr.types.T" title="stpr.types.T"><span class="pre">T</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="types.html#stpr.types.T" title="stpr.types.T"><span class="pre">T</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Awaitable" title="(in Python v3.13)"><span class="pre">Awaitable</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.13)"><span class="pre">object</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/stpr/reactive.html#Reactive.add_callback"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stpr.reactive.Reactive.add_callback" title="Link to this definition">¶</a></dt>
+<dd><p>Adds a callback to this reactive.</p>
+<p>A callback can be used to get asynchronous notifications when a <cite>Reactive</cite> is updated. This
+method is mostly used for implementing low-level functionality.</p>
+<p>Callbacks take three arguments: a <cite>Reactive</cite>, the new value, and the old value. The
+<cite>Reactive</cite> argument can be useful if multiplexing a single callback function with updates
+from multiple reactives.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cb</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.13)"><em>Callable</em></a><em>[</em><em>[</em><a class="reference internal" href="#stpr.reactive.Reactive" title="stpr.reactive.Reactive"><em>Reactive</em></a><em>[</em><a class="reference internal" href="types.html#stpr.types.T" title="stpr.types.T"><em>T</em></a><em>]</em><em>, </em><a class="reference internal" href="types.html#stpr.types.T" title="stpr.types.T"><em>T</em></a><em>, </em><a class="reference internal" href="types.html#stpr.types.T" title="stpr.types.T"><em>T</em></a><em>]</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Awaitable" title="(in Python v3.13)"><em>Awaitable</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.13)"><em>object</em></a><em>]</em><em>]</em>) – A callback function to be called when this reactive is updated.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>None</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="stpr.reactive.Reactive.chain">
+<span class="sig-name descname"><span class="pre">chain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#stpr.reactive.Reactive" title="stpr.reactive.Reactive"><span class="pre">Reactive</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="types.html#stpr.types.T" title="stpr.types.T"><span class="pre">T</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/stpr/reactive.html#Reactive.chain"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stpr.reactive.Reactive.chain" title="Link to this definition">¶</a></dt>
+<dd><p>Chains this reactive to another reactive.</p>
+<p>When chaining reactives, the chained reactive will be updated whenever this reactive is
+updated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>other</strong> (<a class="reference internal" href="#stpr.reactive.Reactive" title="stpr.reactive.Reactive"><em>Reactive</em></a><em>[</em><a class="reference internal" href="types.html#stpr.types.T" title="stpr.types.T"><em>T</em></a><em>]</em>) – The <cite>Reactive</cite> to chain.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>None</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="stpr.reactive.Reactive.update">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="types.html#stpr.types.T" title="stpr.types.T"><span class="pre">T</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/stpr/reactive.html#Reactive.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stpr.reactive.Reactive.update" title="Link to this definition">¶</a></dt>
+<dd><p>Updates the value of this reactive.</p>
+<p>The update triggers updates to all functions that have this <cite>Reactive</cite> as input. In
+principle, if the updated value is the same as the existing value of this <cite>Reactive</cite>, the
+update is silently discarded. This behavior can be overridden with the <cite>force</cite> parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<a class="reference internal" href="types.html#stpr.types.T" title="stpr.types.T"><em>T</em></a>) – The value to update this <cite>Reactive</cite> with.</p></li>
+<li><p><strong>force</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Setting this to <cite>True</cite> forces an update even if the updated value is the same
+as the existing value of this <cite>Reactive</cite>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>None</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="stpr.reactive.Reactive.updates">
+<span class="sig-name descname"><span class="pre">updates</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="types.html#stpr.channels.Channel" title="stpr.channels.Channel"><span class="pre">Channel</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="types.html#stpr.types.T" title="stpr.types.T"><span class="pre">T</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="types.html#stpr.types.T" title="stpr.types.T"><span class="pre">T</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/stpr/reactive.html#Reactive.updates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stpr.reactive.Reactive.updates" title="Link to this definition">¶</a></dt>
+<dd><p>Returns a channel that produces this reactive’s updates.</p>
+<p>The returned channel can be iterated over. Each iteration produces a tuple
+<cite>(new_val, old_val)</cite> which represent the updated value and the old value of the reactive,
+respectively.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="types.html#stpr.channels.Channel" title="stpr.channels.Channel"><em>Channel</em></a>[<a class="reference internal" href="types.html#stpr.types.T" title="stpr.types.T"><em>T</em></a>, <a class="reference internal" href="types.html#stpr.types.T" title="stpr.types.T"><em>T</em></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="stpr.reactive.Debounce">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Debounce</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#stpr.reactive.Reactive" title="stpr.reactive.Reactive"><span class="pre">Reactive</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="types.html#stpr.types.T" title="stpr.types.T"><span class="pre">T</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="types.html#stpr.types.T" title="stpr.types.T"><span class="pre">T</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#stpr.reactive.Undefined" title="stpr.reactive.Undefined"><span class="pre">Undefined</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">UNDEFINED</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stpr/reactive.html#Debounce"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stpr.reactive.Debounce" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#stpr.reactive.Reactive" title="stpr.reactive.Reactive"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reactive</span></code></a>[<a class="reference internal" href="types.html#stpr.types.T" title="stpr.types.T"><code class="xref py py-obj docutils literal notranslate"><span class="pre">T</span></code></a>]</p>
+<p>Implements a de-bounced <cite>Reactive</cite>.</p>
+<p>The de-bounced reactive only updates if the source reactive has not changed its value for
+a pre-determined amount of time. This can be used to filter-out rapid changes in a reactive’s
+value.</p>
+<p>Constructs a new <cite>Debounce</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>r</strong> (<a class="reference internal" href="#stpr.reactive.Reactive" title="stpr.reactive.Reactive"><em>Reactive</em></a><em>[</em><a class="reference internal" href="types.html#stpr.types.T" title="stpr.types.T"><em>T</em></a><em>]</em>) – The source <cite>Reactive</cite> which is to be de-bounced.</p></li>
+<li><p><strong>time</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – An amount of time, in seconds, that the source reactive needs to have held
+single value for this instance to update.</p></li>
+<li><p><strong>value</strong> (<a class="reference internal" href="types.html#stpr.types.T" title="stpr.types.T"><em>T</em></a><em> | </em><a class="reference internal" href="#stpr.reactive.Undefined" title="stpr.reactive.Undefined"><em>Undefined</em></a>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="stpr.reactive.Debounce.update">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="types.html#stpr.types.T" title="stpr.types.T"><span class="pre">T</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/stpr/reactive.html#Debounce.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stpr.reactive.Debounce.update" title="Link to this definition">¶</a></dt>
+<dd><p>Updates the value of this reactive.</p>
+<p>The update triggers updates to all functions that have this <cite>Reactive</cite> as input. In
+principle, if the updated value is the same as the existing value of this <cite>Reactive</cite>, the
+update is silently discarded. This behavior can be overridden with the <cite>force</cite> parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<a class="reference internal" href="types.html#stpr.types.T" title="stpr.types.T"><em>T</em></a>) – The value to update this <cite>Reactive</cite> with.</p></li>
+<li><p><strong>force</strong> – Setting this to <cite>True</cite> forces an update even if the updated value is the same
+as the existing value of this <cite>Reactive</cite>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>None</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="stpr.reactive.Delay">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Delay</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#stpr.reactive.Reactive" title="stpr.reactive.Reactive"><span class="pre">Reactive</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="types.html#stpr.types.T" title="stpr.types.T"><span class="pre">T</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stpr/reactive.html#Delay"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stpr.reactive.Delay" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#stpr.reactive.Reactive" title="stpr.reactive.Reactive"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reactive</span></code></a>[<a class="reference internal" href="types.html#stpr.types.T" title="stpr.types.T"><code class="xref py py-obj docutils literal notranslate"><span class="pre">T</span></code></a>]</p>
+<p>Allows delaying a reactive update.</p>
+<p>Constructs a new <cite>Delay</cite> instance.</p>
+<p>This reactive will receive the same updates as the source reactive. However, each update
+will happen <cite>time</cite> seconds after the source reactive was updated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source</strong> (<a class="reference internal" href="#stpr.reactive.Reactive" title="stpr.reactive.Reactive"><em>Reactive</em></a><em>[</em><a class="reference internal" href="types.html#stpr.types.T" title="stpr.types.T"><em>T</em></a><em>]</em>) – A source reactive to follow.</p></li>
+<li><p><strong>time</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The delay, in seconds.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="stpr.reactive.Delay.update">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="types.html#stpr.types.T" title="stpr.types.T"><span class="pre">T</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/stpr/reactive.html#Delay.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stpr.reactive.Delay.update" title="Link to this definition">¶</a></dt>
+<dd><p>Updates the value of this reactive.</p>
+<p>The update triggers updates to all functions that have this <cite>Reactive</cite> as input. In
+principle, if the updated value is the same as the existing value of this <cite>Reactive</cite>, the
+update is silently discarded. This behavior can be overridden with the <cite>force</cite> parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<a class="reference internal" href="types.html#stpr.types.T" title="stpr.types.T"><em>T</em></a>) – The value to update this <cite>Reactive</cite> with.</p></li>
+<li><p><strong>force</strong> – Setting this to <cite>True</cite> forces an update even if the updated value is the same
+as the existing value of this <cite>Reactive</cite>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>None</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="stpr.reactive.Undefined">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Undefined</span></span><a class="reference internal" href="../_modules/stpr/reactive.html#Undefined"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stpr.reactive.Undefined" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>This class is the type of the <a class="reference internal" href="#stpr.reactive.UNDEFINED" title="stpr.reactive.UNDEFINED"><code class="xref py py-const docutils literal notranslate"><span class="pre">UNDEFINED</span></code></a> value which is used to represent a reactive
+that has no particular value. Since <code class="docutils literal notranslate"><span class="pre">None</span></code> is a possible value of a reactive,
+<a class="reference internal" href="#stpr.reactive.UNDEFINED" title="stpr.reactive.UNDEFINED"><code class="xref py py-const docutils literal notranslate"><span class="pre">UNDEFINED</span></code></a> is distinct from it.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="stpr.reactive.UNDEFINED">
+<span class="sig-name descname"><span class="pre">UNDEFINED</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">UNDEFINED</span></em><a class="headerlink" href="#stpr.reactive.UNDEFINED" title="Link to this definition">¶</a></dt>
+<dd><p>A special value that indicates that a reactive does not have an explicit value.</p>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        <div id="right_sidebar">
+            <h4>Page contents</h4>
+            <div class="page_toc">
+                <ul>
+<li><a class="reference internal" href="#">Reactive Variables and Functions</a><ul>
+<li><a class="reference internal" href="#stpr.reactive.fn"><code class="docutils literal notranslate"><span class="pre">fn()</span></code></a></li>
+<li><a class="reference internal" href="#stpr.reactive.Reactive"><code class="docutils literal notranslate"><span class="pre">Reactive</span></code></a><ul>
+<li><a class="reference internal" href="#stpr.reactive.Reactive.add_callback"><code class="docutils literal notranslate"><span class="pre">Reactive.add_callback()</span></code></a></li>
+<li><a class="reference internal" href="#stpr.reactive.Reactive.chain"><code class="docutils literal notranslate"><span class="pre">Reactive.chain()</span></code></a></li>
+<li><a class="reference internal" href="#stpr.reactive.Reactive.update"><code class="docutils literal notranslate"><span class="pre">Reactive.update()</span></code></a></li>
+<li><a class="reference internal" href="#stpr.reactive.Reactive.updates"><code class="docutils literal notranslate"><span class="pre">Reactive.updates()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#stpr.reactive.Debounce"><code class="docutils literal notranslate"><span class="pre">Debounce</span></code></a><ul>
+<li><a class="reference internal" href="#stpr.reactive.Debounce.update"><code class="docutils literal notranslate"><span class="pre">Debounce.update()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#stpr.reactive.Delay"><code class="docutils literal notranslate"><span class="pre">Delay</span></code></a><ul>
+<li><a class="reference internal" href="#stpr.reactive.Delay.update"><code class="docutils literal notranslate"><span class="pre">Delay.update()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#stpr.reactive.Undefined"><code class="docutils literal notranslate"><span class="pre">Undefined</span></code></a></li>
+<li><a class="reference internal" href="#stpr.reactive.UNDEFINED"><code class="docutils literal notranslate"><span class="pre">UNDEFINED</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    
+
+      <div class="clearer"></div>
+    </div>
+    <div class="button_nav_wrapper">
+        <div class="button_nav">
+            <div class="left">
+                
+                <a href="functions.html">
+                    <span class="icon">&lt;</span><span>Stpr Functions</span></a>
+                
+            </div>
+
+            <div class="right">
+                
+            </div>
+        </div>
+    </div>
+
+        
+
+  </body>
+</html>

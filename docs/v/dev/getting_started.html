@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Getting Started &#8212; Stpr</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+    <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="_static/style.css?v=b283b5c5" />
+    <link rel="stylesheet" type="text/css" href="_static/fixes.css?v=40ebb8c7" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Radio+Canada:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+
+    
+    <script src="_static/documentation_options.js?v=d45e8c67"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/main.js?v=6c1a4791"></script>
+    <script src="_static/js/theme.js"></script>
+    <script src="_static/js/petite-vue.js"></script>
+
+    <link rel="canonical" href="/stpr/getting_started.html" />
+    <link rel="icon" href="_static/favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tutorial" href="tutorial.html" />
+    <link rel="prev" title="Structured Parallelism in Python" href="index.html" /> 
+  </head><body class="page-getting_started docpage" data-dark_mode_code_blocks="true">
+    <div id="top_nav">
+        
+
+        <nav>
+            
+                
+            
+
+            <h1><a href="/stpr" title="Go to homepage">Stpr</a></h1>
+
+
+            <ul class="top-menu">
+    <li><a href="/stpr/install.html" class="not-active">Install</a></li>
+    <li><a href="/stpr/docs/index.html" class="active">Documentation</a></li>
+</ul>
+                <p class="mobile_search_link">
+                    <a href="search.html" title="Search">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65 64" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2">
+                            <path d="M14.873 40.009c-2.315-3.943-3.642-8.532-3.642-13.429C11.231 11.91 23.141 0 37.811 0s26.58 11.91 26.58 26.58-11.91 26.58-26.58 26.58a26.44 26.44 0 0 1-14.277-4.161L9.739 62.794a3.12 3.12 0 0 1-4.413 0L.913 58.382c-1.217-1.218-1.217-3.196 0-4.413l13.96-13.96zM37.811 8.054c10.225 0 18.526 8.301 18.526 18.526s-8.301 18.526-18.526 18.526-18.526-8.301-18.526-18.526S27.586 8.054 37.811 8.054z" fill="#fff" />
+                        </svg>
+                    </a>
+                </p>
+            
+                <div class="searchbox_wrapper">
+                    
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+                </div>
+            
+
+            <a href="https://github.com/hategan/stpr" class="gh">GitHub</a>
+        </nav>
+    </div>
+
+        
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper"><ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/primitives.html">Concurrency Primitives</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/types.html">Stpr Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/functions.html">Stpr Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/reactives.html">Reactive Variables and Functions</a></li>
+</ul>
+
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="index.html"
+                          title="previous chapter">Structured Parallelism in Python</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="tutorial.html"
+                          title="next chapter">Tutorial</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/getting_started.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+
+    
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="getting-started">
+<h1>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading">¶</a></h1>
+<p>This is a beginner’s guide to the Stpr Python library. Stpr is a library
+that makes concurrent programming using <a class="reference external" href="https://docs.python.org/3/library/asyncio.html#module-asyncio" title="(in Python v3.13)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">asyncio</span></code></a> intuitive and
+the resulting code maintainable.</p>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading">¶</a></h2>
+<p>Using <a class="reference external" href="https://packaging.python.org/en/latest/key_projects/#pip">PIP</a>:</p>
+<div class="highlight-Bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>stpr
+</pre></div>
+</div>
+</section>
+<section id="why-stpr">
+<h2>Why Stpr?<a class="headerlink" href="#why-stpr" title="Link to this heading">¶</a></h2>
+<p>Stpr allows a programmer to write scalable concurrent and asyncio based
+programs while keeping the conceptual simplicity of synchronous programming.</p>
+<p>Writing scalable concurrent software is difficult. Traditionally, this involves
+the use of multiprocessing and/or threads, both of which are heavyweight
+entities that are limited in number by the operating system. In Python,
+the <a class="reference external" href="https://docs.python.org/3/library/asyncio.html#module-asyncio" title="(in Python v3.13)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">asyncio</span></code></a> module, with support from the language, offers a
+better solution. Let us look at a simple example. We start by writing a quick
+HTTP server using the <a class="reference external" href="https://docs.aiohttp.org/en/stable/">aiohttp</a> library:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">from</span> <span class="nn">aiohttp</span> <span class="kn">import</span> <span class="n">web</span>
+<span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Thread</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">handle</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">web</span><span class="o">.</span><span class="n">Response</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Hello from the async server&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">run_server</span><span class="p">():</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">Application</span><span class="p">()</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">add_routes</span><span class="p">([</span><span class="n">web</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="n">handle</span><span class="p">),</span>
+                    <span class="n">web</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;/</span><span class="si">{name}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">handle</span><span class="p">)])</span>
+    <span class="n">web</span><span class="o">.</span><span class="n">run_app</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">8080</span><span class="p">,</span>
+                <span class="n">handle_signals</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">run_server</span><span class="p">,</span> <span class="n">daemon</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The server simulates a delay typical of a somewhat distant server somewhere
+on the Internet. This simple server should be started so that the client examples
+-that follow can talk to it. We want to compare code making concurrent requests to this
+server using threads, plain <code class="docutils literal notranslate"><span class="pre">asyncio</span></code> and <code class="docutils literal notranslate"><span class="pre">stpr</span></code>. A possible thread based
+solution is:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">threads_1</span><span class="p">():</span>
+    <span class="n">contents</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span>
+        <span class="s2">&quot;http://localhost:8080&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">threads_n</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">threads</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">threads_1</span><span class="p">)</span>
+        <span class="n">threads</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">thread</span> <span class="ow">in</span> <span class="n">threads</span><span class="p">:</span>
+        <span class="n">thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This allows us to run <code class="docutils literal notranslate"><span class="pre">n</span></code> concurrent requests. We can use the following
+convenience function to time the execution and display the result:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">time</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">fn</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">(</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1">): </span><span class="si">{</span><span class="n">t</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We can now run the <code class="docutils literal notranslate"><span class="pre">threads</span></code> method:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">]:</span>
+    <span class="n">time</span><span class="p">(</span><span class="n">threads</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The result should be something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">threads_n</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span> <span class="mf">0.54</span><span class="n">s</span>
+<span class="n">threads_n</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span> <span class="mf">0.51</span><span class="n">s</span>
+<span class="n">threads_n</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span> <span class="mf">0.54</span><span class="n">s</span>
+<span class="n">threads_n</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span> <span class="mf">1.65</span><span class="n">s</span>
+<span class="n">threads_n</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span> <span class="mf">16.26</span><span class="n">s</span>
+</pre></div>
+</div>
+<p>We see that the performance starts degrading around 1000 threads and becomes
+significant at 10000 threads. What is not shown is that there is also a
+significant penalty in terms of memory use. Each thread typically requires
+8 megabytes for its stack, which means that 10000 threads will need somewhere
+around 80 GB of virtual memory. Luckily, only a small portion of the thread
+stack is used by the example above, and that portion fits in the physical
+memory of a typical computer.</p>
+<p>A possible <code class="docutils literal notranslate"><span class="pre">asyncio</span></code> based alternative is as follows:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span> <span class="nf">aio_1</span><span class="p">():</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">ClientSession</span><span class="p">()</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
+        <span class="k">async</span> <span class="k">with</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://localhost:8080&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">resp</span><span class="p">:</span>
+            <span class="n">contents</span> <span class="o">=</span> <span class="k">await</span> <span class="n">resp</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">aio_n</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">TaskGroup</span><span class="p">()</span> <span class="k">as</span> <span class="n">tg</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="n">tg</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">aio_1</span><span class="p">())</span>
+
+<span class="k">def</span> <span class="nf">aio_main</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">aio_n</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>A few things can be noted:</p>
+<ul class="simple">
+<li><p>Functions become coroutines, defined with <code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">def</span></code>. Without the
+<code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">def</span></code>, we would not be able to use <code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">with</span></code> or <code class="docutils literal notranslate"><span class="pre">await</span></code> in
+a function.</p></li>
+<li><p>Perhaps subtle, we cannot use <code class="docutils literal notranslate"><span class="pre">ClientSession</span></code> with a plain <code class="docutils literal notranslate"><span class="pre">with</span></code>. Doing
+so will produce an error.</p></li>
+<li><p>We must, at some point, <code class="docutils literal notranslate"><span class="pre">await</span></code> coroutines. Not doing so also results in
+<code class="docutils literal notranslate"><span class="pre">asyncio</span></code> complaining. In fact, none of the code inside a coroutine
+executes until an <code class="docutils literal notranslate"><span class="pre">await</span></code> statement is invoked on it. In other words,
+<code class="docutils literal notranslate"><span class="pre">await</span></code> is more like <code class="docutils literal notranslate"><span class="pre">thread.start();</span> <span class="pre">thread.join()</span></code> than simply
+<code class="docutils literal notranslate"><span class="pre">thread.join()</span></code>.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">TaskGroup</span></code> context manager automatically awaits for all the tasks to
+complete; there is no need to explicitly <code class="docutils literal notranslate"><span class="pre">await</span></code> the tasks.</p></li>
+</ul>
+<p>Using asynchronous operations shows a clear improvement in scaling:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">aio_n</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span> <span class="mf">0.51</span><span class="n">s</span>
+<span class="n">aio_n</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span> <span class="mf">0.51</span><span class="n">s</span>
+<span class="n">aio_n</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span> <span class="mf">0.61</span><span class="n">s</span>
+<span class="n">aio_n</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span> <span class="mf">1.16</span><span class="n">s</span>
+<span class="n">aio_n</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span> <span class="mf">6.77</span><span class="n">s</span>
+</pre></div>
+</div>
+<p>We can also use <code class="docutils literal notranslate"><span class="pre">stpr</span></code>:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">stpr</span>
+
+<span class="nd">@stpr</span><span class="o">.</span><span class="n">fn</span>
+<span class="k">def</span> <span class="nf">stpr_1</span><span class="p">():</span>
+    <span class="k">with</span> <span class="n">ClientSession</span><span class="p">()</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://localhost:8080&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">resp</span><span class="p">:</span>
+            <span class="n">contents</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
+
+<span class="nd">@stpr</span><span class="o">.</span><span class="n">fn</span>
+<span class="k">def</span> <span class="nf">stpr_n</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">st</span><span class="o">.</span><span class="n">parallelFor</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)):</span>
+        <span class="n">stpr_1</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">stpr_main</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">stpr</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">stpr_n</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Some notable things are:</p>
+<ul class="simple">
+<li><p>Stpr is, at its core, an <a class="reference external" href="https://docs.python.org/3/library/ast.html">AST</a>
+transformer. It takes an AST tree representation of a function, transforms it
+to a new AST tree, and compiles the result in place. This requires Stpr
+functions to be decorated using <code class="docutils literal notranslate"><span class="pre">&#64;stpr.fn</span></code>.</p></li>
+<li><p>We do not need any special syntax for invoking coroutines, which are
+automatically awaited for. Stpr abstracts <em>how</em> computations are run and,
+instead, allows the programmer to focus on <em>what</em> computations are run and
+how their parallelism is structured.</p></li>
+</ul>
+<p>The timing results of <code class="docutils literal notranslate"><span class="pre">stpr_main(n)</span></code> should look similar to those of
+<code class="docutils literal notranslate"><span class="pre">aio_main(n)</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stpr_n</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span> <span class="mf">0.62</span><span class="n">s</span>
+<span class="n">stpr_n</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span> <span class="mf">0.52</span><span class="n">s</span>
+<span class="n">stpr_n</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span> <span class="mf">0.58</span><span class="n">s</span>
+<span class="n">stpr_n</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span> <span class="mf">1.06</span><span class="n">s</span>
+<span class="n">stpr_n</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span> <span class="mf">6.79</span><span class="n">s</span>
+</pre></div>
+</div>
+</section>
+<section id="the-basics">
+<h2>The Basics<a class="headerlink" href="#the-basics" title="Link to this heading">¶</a></h2>
+<section id="running-stpr-functions">
+<h3>Running Stpr Functions<a class="headerlink" href="#running-stpr-functions" title="Link to this heading">¶</a></h3>
+<p>Using Stpr starts with decorating a function or method with the <a class="reference internal" href="api/primitives.html#stpr.fn" title="stpr.fn"><code class="xref py py-func docutils literal notranslate"><span class="pre">stpr.fn()</span></code></a>
+decorator. The decorator analyzes the function code, processes <code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">stpr.xx</span></code>
+statements as well as other calls to Stpr functions, and inserts <code class="docutils literal notranslate"><span class="pre">await</span></code>
+statements as needed. A Stpr function can be called from normal Python code
+using <a class="reference internal" href="api/functions.html#stpr.run" title="stpr.run"><code class="xref py py-func docutils literal notranslate"><span class="pre">stpr.run()</span></code></a> and directly from another Stpr function:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nd">@stpr</span><span class="o">.</span><span class="n">fn</span>
+<span class="k">def</span> <span class="nf">foo</span><span class="p">():</span>
+    <span class="k">pass</span>
+
+<span class="nd">@stpr</span><span class="o">.</span><span class="n">fn</span>
+<span class="k">def</span> <span class="nf">bar</span><span class="p">():</span>
+    <span class="n">foo</span><span class="p">()</span>  <span class="c1"># can be called directly</span>
+
+<span class="n">stpr</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">bar</span><span class="p">())</span>
+<span class="n">stpr</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">bar</span><span class="p">)</span>  <span class="c1"># if there are no arguments, this works, too</span>
+</pre></div>
+</div>
+</section>
+<section id="running-things-in-parallel">
+<h3>Running Things in Parallel<a class="headerlink" href="#running-things-in-parallel" title="Link to this heading">¶</a></h3>
+<p>Basic parallel execution can be achieved with <a class="reference internal" href="api/primitives.html#stpr.parallel" title="stpr.parallel"><code class="xref py py-class docutils literal notranslate"><span class="pre">stpr.parallel</span></code></a>, which
+runs all of its child statements in parallel:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nd">@stpr</span><span class="o">.</span><span class="n">fn</span>
+<span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">stpr</span><span class="o">.</span><span class="n">parallel</span><span class="p">:</span>
+        <span class="n">f</span><span class="p">()</span>
+        <span class="n">g</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="n">h</span><span class="p">()</span>
+            <span class="n">l</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The above code runs <code class="docutils literal notranslate"><span class="pre">f()</span></code>, <code class="docutils literal notranslate"><span class="pre">g()</span></code>, and the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement in parallel.
+Because <code class="docutils literal notranslate"><span class="pre">h()</span></code> and <code class="docutils literal notranslate"><span class="pre">l()</span></code> are not immediate sub-statements of the <code class="docutils literal notranslate"><span class="pre">with</span></code>
+statement, they will run sequentially which is the default. This can be
+visualized in the activity diagram below:</p>
+<figure class="align-center">
+<p class="plantuml">
+<object data="_images/plantuml-9e405578daa7dc7a99e204735544b8b419db0628.svg" type="image/svg+xml" style="width:253px;height:359px;background:#FFFFFF;">
+<img src="_images/plantuml-9e405578daa7dc7a99e204735544b8b419db0628.png" alt="&#64;startuml
+skinparam DefaultFontSize 15
+skinparam defaultFontName Ubuntu Mono
+start
+fork
+    :f();
+fork again
+    :g();
+fork again
+    if (n == 3) then (yes)
+        :h();
+        :l();
+    else (no)
+    endif
+end fork
+stop
+&#64;enduml"/>
+
+</object></p>
+</figure>
+<p>The functions <code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">c</span></code>, and <code class="docutils literal notranslate"><span class="pre">d</span></code> can be either Stpr functions,
+<code class="docutils literal notranslate"><span class="pre">async</span></code> functions, or normal Python functions. If the latter, they will be
+run in separate threads such that the diagram above is always satisfied. You
+can read more about this mechanism in <a class="reference internal" href="#sync-fn-exec"><span class="std std-ref">Synchronous Function Execution</span></a>.</p>
+<p>Variables assigned inside a <code class="docutils literal notranslate"><span class="pre">stpr.parallel</span></code> statement can be used as if they
+were assigned in any other <code class="docutils literal notranslate"><span class="pre">with</span></code> statement:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">stpr</span><span class="o">.</span><span class="n">parallel</span><span class="p">:</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">f</span><span class="p">()</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">g</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A function version of <code class="docutils literal notranslate"><span class="pre">stpr.parallel</span></code> also exists:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">stpr</span><span class="o">.</span><span class="n">parallel</span><span class="p">(</span><span class="n">f</span><span class="p">(),</span> <span class="n">g</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>In this case, <code class="docutils literal notranslate"><span class="pre">stpr.parallel</span></code> acts as the identity function and, aside from
+executing <code class="docutils literal notranslate"><span class="pre">f()</span></code> and <code class="docutils literal notranslate"><span class="pre">g()</span></code> in parallel, it is equivalent to the
+statement <code class="docutils literal notranslate"><span class="pre">a,</span> <span class="pre">b</span> <span class="pre">=</span> <span class="pre">f(),</span> <span class="pre">g()</span></code>.</p>
+</section>
+<section id="running-things-sequentially">
+<h3>Running Things Sequentially<a class="headerlink" href="#running-things-sequentially" title="Link to this heading">¶</a></h3>
+<p>Statements inside Stpr functions are, by default, executed sequentially.
+However, as we have seen above, cases may exist when we want to run some
+a sequence of statements in parallel with others. We could simply rely on
+the fact that <code class="docutils literal notranslate"><span class="pre">stpr.parallel</span></code> treats an <code class="docutils literal notranslate"><span class="pre">if</span></code> statement as a whole and write
+something like this:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">stpr</span><span class="o">.</span><span class="n">parallel</span><span class="p">:</span>
+    <span class="n">a</span><span class="p">()</span>
+    <span class="k">if</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">c</span><span class="p">()</span>
+        <span class="n">d</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>However, the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement does not intuitively represent a sequence and can
+be confusing. Instead, we can use <code class="docutils literal notranslate"><span class="pre">stpr.seq</span></code> to clearly indicate that a
+sequential execution of statements is desired:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">stpr</span><span class="o">.</span><span class="n">parallel</span><span class="p">:</span>
+    <span class="n">a</span><span class="p">()</span>
+    <span class="k">with</span> <span class="n">stpr</span><span class="o">.</span><span class="n">seq</span><span class="p">:</span>
+        <span class="n">c</span><span class="p">()</span>
+        <span class="n">d</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="parallel-iterations">
+<h3>Parallel “Iterations”<a class="headerlink" href="#parallel-iterations" title="Link to this heading">¶</a></h3>
+<p>Parallel iterations can be achieved with <a class="reference internal" href="api/primitives.html#stpr.parallelFor" title="stpr.parallelFor"><code class="xref py py-func docutils literal notranslate"><span class="pre">stpr.parallelFor()</span></code></a>:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">stpr</span><span class="o">.</span><span class="n">parallelFor</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span> <span class="k">as</span> <span class="n">i</span><span class="p">:</span>
+    <span class="n">f</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In the above example, ten parallel invocations of <code class="docutils literal notranslate"><span class="pre">f()</span></code> will be run, each
+with a distinct number between 0 and 9 as argument.</p>
+</section>
+<section id="controlled-races">
+<h3>Controlled Races<a class="headerlink" href="#controlled-races" title="Link to this heading">¶</a></h3>
+<p>It is often the case that we have two or more concurrent operations but care
+only about the result of the operation that finishes first. This is essentially
+the case with all timeout-guarded operations. Stpr allows implementing such
+functionality using <a class="reference internal" href="api/primitives.html#stpr.race" title="stpr.race"><code class="xref py py-func docutils literal notranslate"><span class="pre">stpr.race()</span></code></a>:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">stpr</span><span class="o">.</span><span class="n">race</span><span class="p">(</span><span class="n">a</span><span class="p">(),</span> <span class="n">b</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>The code above, similar to <code class="docutils literal notranslate"><span class="pre">stpr.parallel</span></code>, runs both <code class="docutils literal notranslate"><span class="pre">a()</span></code> and <code class="docutils literal notranslate"><span class="pre">b()</span></code> in
+parallel. However, it only returns the result of the functions the finishes
+first. This can be used to quickly implement timeouts:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">stpr</span><span class="o">.</span><span class="n">race</span><span class="p">(</span><span class="n">f</span><span class="p">(),</span> <span class="n">stpr</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Operation timed out&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Result is </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The code above assumes that <code class="docutils literal notranslate"><span class="pre">f()</span></code> returns a non-null result. When the first
+function under <code class="docutils literal notranslate"><span class="pre">stpr.race()</span></code> completes, <code class="docutils literal notranslate"><span class="pre">race</span></code> will cancel all other
+still-running functions. This is generally intended to be used with functions
+whose cancellation will not leave the system in an inconsistent state.</p>
+</section>
+<section id="exception-handling">
+<h3>Exception Handling<a class="headerlink" href="#exception-handling" title="Link to this heading">¶</a></h3>
+<p>One of the defining features that distinguishes structured parallelism from
+traditional threading is that exceptions that occur in a parallel context are
+propagated just as they would in sequential code:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">stpr</span><span class="o">.</span><span class="n">parallel</span><span class="p">:</span>
+        <span class="n">f</span><span class="p">()</span>
+        <span class="n">g</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Exception!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In the above example, if either <code class="docutils literal notranslate"><span class="pre">f()</span></code> or <code class="docutils literal notranslate"><span class="pre">g()</span></code> raise an exception, all
+actively running coroutines started by <a class="reference internal" href="api/primitives.html#stpr.parallel" title="stpr.parallel"><code class="xref py py-class docutils literal notranslate"><span class="pre">stpr.parallel</span></code></a> are canceled
+and the exception is propagated to the enclosing <code class="docutils literal notranslate"><span class="pre">except</span></code> branch.</p>
+</section>
+<section id="critical-sections">
+<h3>Critical Sections<a class="headerlink" href="#critical-sections" title="Link to this heading">¶</a></h3>
+<p>It is often the case that two (or more) concurrent computations must access
+a shared state while ensuring that a set of operations is only performed in
+one of those computations. The classic example of this is the read-modify-write
+pattern. In order to ensure correctness, these operations must be executed
+in a so called <em>critical section</em>, which is usually done with a <em>lock</em>.
+There are two <code class="docutils literal notranslate"><span class="pre">Lock</span></code> classes in the Python standard library:
+<a class="reference external" href="https://docs.python.org/3/library/threading.html#threading.Lock" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">threading.Lock</span></code></a> (with its re-entrant twin <a class="reference external" href="https://docs.python.org/3/library/threading.html#threading.RLock" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">threading.RLock</span></code></a>)
+and <a class="reference external" href="https://docs.python.org/3/library/asyncio-sync.html#asyncio.Lock" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">asyncio.Lock</span></code></a>. Unfortunately, <a class="reference external" href="https://docs.python.org/3/library/asyncio-sync.html#asyncio.Lock" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">asyncio.Lock</span></code></a> does not
+prevent two Python threads from running concurrently and
+<a class="reference external" href="https://docs.python.org/3/library/threading.html#threading.RLock" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">threading.RLock</span></code></a> does not prevent two coroutines from running
+concurrently. Since Stpr employs both Python Threads and coroutines, it
+provides a <a class="reference internal" href="api/primitives.html#stpr.Lock" title="stpr.Lock"><code class="xref py py-class docutils literal notranslate"><span class="pre">stpr.Lock</span></code></a>, which ensures that both threads and coroutines
+are prevented from concurrently accessing a critical section. The semantics
+are similar to the other <code class="docutils literal notranslate"><span class="pre">Lock</span></code> classes:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">g</span><span class="p">(</span><span class="n">lock</span><span class="p">:</span> <span class="n">stpr</span><span class="o">.</span><span class="n">Lock</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="c1"># this is not a coroutine, so it will run in</span>
+    <span class="c1"># a thread</span>
+    <span class="k">with</span> <span class="n">lock</span><span class="p">:</span>
+        <span class="c1"># atomic operations</span>
+
+<span class="nd">@stpr</span><span class="o">.</span><span class="n">fn</span>
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">lock</span><span class="p">:</span> <span class="n">stpr</span><span class="o">.</span><span class="n">Lock</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="c1"># this is a coroutine, so it will run in an asyncio</span>
+    <span class="c1"># loop</span>
+    <span class="k">with</span> <span class="n">lock</span><span class="p">:</span>
+        <span class="n">atomic</span> <span class="n">operations</span>
+</pre></div>
+</div>
+<p>In most cases, the internal details of what runs how are not important. What is
+important is that one should use <a class="reference internal" href="api/primitives.html#stpr.Lock" title="stpr.Lock"><code class="xref py py-class docutils literal notranslate"><span class="pre">stpr.Lock</span></code></a> with Stpr.</p>
+</section>
+<section id="throttling">
+<h3>Throttling<a class="headerlink" href="#throttling" title="Link to this heading">¶</a></h3>
+<p>A throttle is a generalization of a <em>lock</em> in that it allows at most a certain
+number <code class="docutils literal notranslate"><span class="pre">n</span></code> of computations to run concurrently. A lock is, therefore, a
+throttle with <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">==</span> <span class="pre">1</span></code>.</p>
+</section>
+<section id="synchronous-function-execution">
+<span id="sync-fn-exec"></span><h3>Synchronous Function Execution<a class="headerlink" href="#synchronous-function-execution" title="Link to this heading">¶</a></h3>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        <div id="right_sidebar">
+            <h4>Page contents</h4>
+            <div class="page_toc">
+                <ul>
+<li><a class="reference internal" href="#">Getting Started</a><ul>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#why-stpr">Why Stpr?</a></li>
+<li><a class="reference internal" href="#the-basics">The Basics</a><ul>
+<li><a class="reference internal" href="#running-stpr-functions">Running Stpr Functions</a></li>
+<li><a class="reference internal" href="#running-things-in-parallel">Running Things in Parallel</a></li>
+<li><a class="reference internal" href="#running-things-sequentially">Running Things Sequentially</a></li>
+<li><a class="reference internal" href="#parallel-iterations">Parallel “Iterations”</a></li>
+<li><a class="reference internal" href="#controlled-races">Controlled Races</a></li>
+<li><a class="reference internal" href="#exception-handling">Exception Handling</a></li>
+<li><a class="reference internal" href="#critical-sections">Critical Sections</a></li>
+<li><a class="reference internal" href="#throttling">Throttling</a></li>
+<li><a class="reference internal" href="#synchronous-function-execution">Synchronous Function Execution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    
+
+      <div class="clearer"></div>
+    </div>
+    <div class="button_nav_wrapper">
+        <div class="button_nav">
+            <div class="left">
+                
+                <a href="index.html">
+                    <span class="icon">&lt;</span><span>Structured Parallelism in Python</span></a>
+                
+            </div>
+
+            <div class="right">
+                
+                    <a href="tutorial.html"><span>Tutorial</span><span class="icon">&gt;</span></a>
+                
+            </div>
+        </div>
+    </div>
+
+        
+
+  </body>
+</html>
