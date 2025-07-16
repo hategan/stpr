@@ -21,7 +21,7 @@
     existing functions with the Stpr decorator.
                 </p>
                 <p>
-    <a class="button" href="/docs">View Documentation</a>
+    <a class="button" href="docs">View Documentation</a>
                 </p>
             </div>
             <div class="right">
