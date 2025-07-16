@@ -33,6 +33,7 @@ nitpick_ignore = [
     ('py:class', 'distutils.version.Version'),
     ('py:class', 'packaging.version.Version')
 ]
+html_title = 'Stpr'
 
 if web_docs:
     templates_path = ['../web/_templates']
@@ -50,7 +51,6 @@ if web_docs:
     # But we already have the version selector that displays the version,
     # so we can display that where the broken version would otherwise
     # have appeared.
-    html_title = 'stpr'
     # Multi-version
     smv_branch_whitelist = '^matchmeifyoucan$'
     smv_remote_whitelist = None

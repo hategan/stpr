@@ -19,7 +19,7 @@ html_favicon = 'favicon.png'
 
 templates_path = ['_templates']
 
-#html_title = "stpr"
+html_title = "Stpr"
 html_logo = './_static/logo-large.png'
 
 # Extra JS/CSS

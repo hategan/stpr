@@ -12,6 +12,8 @@ if [ "$1" != "--quick" ]; then
     cp -r docs/.web-build/* web-build/docs/
 fi
 
+touch web-build/.nojekyll
+
 echo -n "var DOC_VERSIONS_RAW = [" >web-build/_static/versions.js
 for V in `ls web-build/docs/v`; do
 	echo "Patching version $V"
