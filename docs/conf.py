@@ -34,6 +34,8 @@ nitpick_ignore = [
     ('py:class', 'packaging.version.Version')
 ]
 html_title = 'Stpr'
+html_logo = './_static/logo-large.png'
+
 
 if web_docs:
     templates_path = ['../web/_templates']
