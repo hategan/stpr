@@ -41,6 +41,7 @@ if web_docs:
     html_static_path = ['../web/_static']
     html_js_files = ['main.js']
     html_css_files = ['style.css', 'fixes.css']
+    html_baseurl = '/stpr/'
 
     # Unfortunately sphinx-multiversion does not properly deal with
     # setting the title to the proper version. You either get some

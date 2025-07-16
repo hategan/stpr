@@ -21,6 +21,7 @@ templates_path = ['_templates']
 
 html_title = "Stpr"
 html_logo = './_static/logo-large.png'
+html_baseurl = '/stpr/'
 
 # Extra JS/CSS
 html_static_path = ['_static']
