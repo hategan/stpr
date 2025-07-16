@@ -16,7 +16,10 @@ jobs:
         run: git fetch --all --tags
       -
         name: Build Website
-        run: /bin/bash web/build.sh
+        run: |
+            pip install -r requirements.txt
+            pip install -r requirements-docs.txt
+            /bin/bash web/build.sh
       -
         name: Deploy to GitHub Pages
         if: success()

@@ -86,7 +86,7 @@ autodoc_default_options = {
 
 cwd = os.getcwd()
 
-plantuml = f'java -jar {cwd}/plantuml2.jar'
+plantuml = f'java -jar {cwd}/plantuml.jar'
 plantuml_output_format = 'svg'
 
 

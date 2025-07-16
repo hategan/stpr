@@ -1,7 +1,5 @@
 #!/bin/bash
 
-echo ">>>>>>>>ARGS: $@"
-
 set -e
 
 if [ "$1" != "--quick" ]; then
