@@ -1,0 +1,49 @@
+# This workflow will install Python dependencies, run tests and lint with a variety of Python versions
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+
+name: Python package
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  lint:
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: [3.8, 3.9, 3.10, 3.11, 3.12]
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install dependencies
+      run: |
+        pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: Typecheck and stylecheck
+      run: |
+        python run typecheck
+        python run stylecheck
+    - name: Build docs
+      run: |
+        python run docs
+
+  pytest:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Test with pytest
+      uses: addnab/docker-run-action@v3
+      with:
+        image: ubuntu-latest
+        options: -v ${{ github.workspace }}:/workspace -u root
+        run: |
+          cd /workspace
+          echo "Running in ${PWD}"
+          sudo apt update
+          pip install -r requirements.txt
+          python run install
+          python run tests
