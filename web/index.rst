@@ -6,7 +6,7 @@
                 <h1>A structured parallelism library for Python</h1>
             </div>
             <div class="right">
-                <img src="/_static/main.png" width="80%"/>
+                <img src="_static/main.png" width="80%"/>
             </div>
         </div>
         <div class="main-section">
