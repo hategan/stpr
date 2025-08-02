@@ -1,5 +1,8 @@
 # Stpr
 
+* [**Website**](https://hategan.github.io/stpr)
+* [**Documentation**](https://hategan.github.io/stpr/docs)
+
 Stpr (probably pronounced "steeper") is an experimental library for
 structured parallelism in Python. It combines the efficiency of the
 asyncio library with the intuitiveness of sequential programming.
