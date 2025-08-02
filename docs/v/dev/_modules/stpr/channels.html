@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>stpr.channels &#8212; Stpr</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic_mod.css?v=9b2032db" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style.css?v=b283b5c5" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fixes.css?v=40ebb8c7" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Radio+Canada:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+
+    
+    <script src="../../_static/documentation_options.js?v=d45e8c67"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/main.js?v=6c1a4791"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/petite-vue.js"></script>
+
+    <link rel="canonical" href="/stpr/_modules/stpr/channels.html" />
+    <link rel="icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+  </head><body class="page-_modules/stpr/channels docpage" data-dark_mode_code_blocks="true">
+    <div id="top_nav">
+        
+
+        <nav>
+            
+                
+            
+
+            <h1><a href="/stpr" title="Go to homepage">Stpr</a></h1>
+
+
+            <ul class="top-menu">
+    <li><a href="/stpr/install.html" class="not-active">Install</a></li>
+    <li><a href="/stpr/docs/index.html" class="active">Documentation</a></li>
+</ul>
+                <p class="mobile_search_link">
+                    <a href="../../search.html" title="Search">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65 64" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2">
+                            <path d="M14.873 40.009c-2.315-3.943-3.642-8.532-3.642-13.429C11.231 11.91 23.141 0 37.811 0s26.58 11.91 26.58 26.58-11.91 26.58-26.58 26.58a26.44 26.44 0 0 1-14.277-4.161L9.739 62.794a3.12 3.12 0 0 1-4.413 0L.913 58.382c-1.217-1.218-1.217-3.196 0-4.413l13.96-13.96zM37.811 8.054c10.225 0 18.526 8.301 18.526 18.526s-8.301 18.526-18.526 18.526-18.526-8.301-18.526-18.526S27.586 8.054 37.811 8.054z" fill="#fff" />
+                        </svg>
+                    </a>
+                </p>
+            
+                <div class="searchbox_wrapper">
+                    
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+                </div>
+            
+
+            <a href="https://github.com/hategan/stpr" class="gh">GitHub</a>
+        </nav>
+    </div>
+
+        
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial.html">Tutorial</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/primitives.html">Concurrency Primitives</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/types.html">Stpr Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/functions.html">Stpr Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/reactives.html">Reactive Variables and Functions</a></li>
+</ul>
+
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+
+    
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for stpr.channels</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TypeVar</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">AsyncIterator</span>
+
+<span class="kn">import</span> <span class="nn">stpr</span>
+<span class="kn">from</span> <span class="nn">stpr.types</span> <span class="kn">import</span> <span class="n">T</span>
+
+
+<span class="k">class</span> <span class="nc">_Guard</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exception</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="ne">Exception</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">exception</span> <span class="o">=</span> <span class="n">exception</span>
+
+
+<span class="n">_GUARD</span> <span class="o">=</span> <span class="n">_Guard</span><span class="p">(</span><span class="ne">StopAsyncIteration</span><span class="p">())</span>
+
+
+<div class="viewcode-block" id="Channel">
+<a class="viewcode-back" href="../../api/types.html#stpr.channels.Channel">[docs]</a>
+<span class="k">class</span> <span class="nc">Channel</span><span class="p">(</span><span class="n">AsyncIterator</span><span class="p">[</span><span class="n">T</span><span class="p">]):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This class implements a channel.</span>
+
+<span class="sd">    A channel is an ordered collection that can be iterated over asynchronously. Values consumed</span>
+<span class="sd">    from a channel are removed completely and cannot be iterated over again. The typical</span>
+<span class="sd">    scenario is that values are added to a channel in a thread and consumed in another:</span>
+
+<span class="sd">    .. code-block:: Python</span>
+
+<span class="sd">        @stpr.fn</span>
+<span class="sd">        def consumer(c: Channel[int]) -&gt; None:</span>
+<span class="sd">            [async] for n in c:</span>
+<span class="sd">                print(f&#39;Received {n}&#39;)</span>
+<span class="sd">            print(&#39;Channel closed&#39;)</span>
+
+<span class="sd">        @stpr.fn</span>
+<span class="sd">        def producer(c: Channel[int]) -&gt; None:</span>
+<span class="sd">            for n in range(10):</span>
+<span class="sd">                c += n</span>
+<span class="sd">                stpr.wait(1)</span>
+<span class="sd">            c.close()</span>
+
+<span class="sd">        @stpr.fn</span>
+<span class="sd">        def run():</span>
+<span class="sd">            c = Channel()</span>
+<span class="sd">            with stpr.parallel:</span>
+<span class="sd">                consumer(c)</span>
+<span class="sd">                producer(c)</span>
+
+<span class="sd">    Where `[async]` is enclosed in square brackets because it is optional. Iteration over a channel</span>
+<span class="sd">    will continue as a long as the `close()` or `fail()` methods on the channel are not called.</span>
+<span class="sd">    While `close()` and `fail()` can be invoked explicitly, it generally safer to use the channel</span>
+<span class="sd">    as a context manager, which automatically takes care of closing and/or failing the channel:</span>
+
+<span class="sd">    .. code-block:: Python</span>
+
+<span class="sd">        @stpr.fn</span>
+<span class="sd">        def producer(c: Channel[int]) -&gt; None:</span>
+<span class="sd">            with c:</span>
+<span class="sd">                for n in range(10):</span>
+<span class="sd">                    c += f(n)</span>
+<span class="sd">                    stpr.wait(1)</span>
+
+<span class="sd">    In the above example, the channel is closed automatically when the `with` statement completes.</span>
+<span class="sd">    Any exceptions thrown by `f()` will propagate out of `producer()`, but also be raised in the</span>
+<span class="sd">    consumer function after all other values in the channel are consumed.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_q</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="fm">__aenter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="fm">__aexit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_val</span><span class="p">,</span> <span class="n">exc_tb</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">exc_val</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">fail</span><span class="p">(</span><span class="n">exc_val</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="fm">__aiter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="fm">__anext__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_q</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">_Guard</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">value</span><span class="o">.</span><span class="n">exception</span>
+        <span class="k">return</span> <span class="n">value</span>
+
+<div class="viewcode-block" id="Channel.append">
+<a class="viewcode-back" href="../../api/types.html#stpr.channels.Channel.append">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">append</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Appends a value to this channel.</span>
+
+<span class="sd">        :param value: The value to append.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_q</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">value</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span> <span class="nf">_append_now</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_q</span><span class="o">.</span><span class="n">put_nowait</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__iadd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_q</span><span class="o">.</span><span class="n">put_nowait</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Channel.close">
+<a class="viewcode-back" href="../../api/types.html#stpr.channels.Channel.close">[docs]</a>
+    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Closes this channel.</span>
+
+<span class="sd">        When the channel is closed and all previously added items are consumed, the channel will</span>
+<span class="sd">        raise :py:exc:`StopAsyncIteration` gracefully terminating the iteration</span>
+<span class="sd">        that is used to consume values from this channel.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_q</span><span class="o">.</span><span class="n">put_nowait</span><span class="p">(</span><span class="n">_GUARD</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Channel.fail">
+<a class="viewcode-back" href="../../api/types.html#stpr.channels.Channel.fail">[docs]</a>
+    <span class="k">def</span> <span class="nf">fail</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exception</span><span class="p">:</span> <span class="ne">Exception</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Fails (poisons) this channel.</span>
+
+<span class="sd">        When this method is called, a special values is added to the channel. When attempts are</span>
+<span class="sd">        made to consume that value, ``exception`` is raised instead.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_q</span><span class="o">.</span><span class="n">put_nowait</span><span class="p">(</span><span class="n">_Guard</span><span class="p">(</span><span class="n">exception</span><span class="p">))</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="select">
+<a class="viewcode-back" href="../../api/types.html#stpr.channels.select">[docs]</a>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">select</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Channel</span><span class="p">[</span><span class="n">T</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Channel</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">T</span><span class="p">,</span> <span class="n">Channel</span><span class="p">[</span><span class="n">T</span><span class="p">]]]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Implements a channel selector.</span>
+
+<span class="sd">    A channel selector is a construct that will wait until a value is added to any one of the</span>
+<span class="sd">    selected channels. For each such value in each channel, the returned channel will produce</span>
+<span class="sd">    a tuple ``(value, channel)`` with the value added and the channel it was added to. For</span>
+<span class="sd">    example:</span>
+
+<span class="sd">    .. code-block:: Python</span>
+
+<span class="sd">        @stpr.fn</span>
+<span class="sd">        def select_example() -&gt; None:</span>
+<span class="sd">            a = Channel()</span>
+<span class="sd">            b = Channel()</span>
+
+<span class="sd">            s = stpr.select(a, b)</span>
+
+<span class="sd">            with stpr.parallel:</span>
+<span class="sd">                for value, channel in s:</span>
+<span class="sd">                    print(f&#39;{value} received on {channel}&#39;)</span>
+
+<span class="sd">                with stpr.seq:</span>
+<span class="sd">                    a.append(1)</span>
+<span class="sd">                    b.append(2)</span>
+<span class="sd">                    a.close()</span>
+<span class="sd">                    b.close()</span>
+
+<span class="sd">        stpr.run(select_example)</span>
+
+<span class="sd">    This example will produce an output similar to the following:</span>
+
+<span class="sd">    .. code-block:: shell</span>
+
+<span class="sd">        1 received on &lt;stpr.channels.Channel object at 0x77985d383620&gt;</span>
+<span class="sd">        2 received on &lt;stpr.channels.Channel object at 0x77985bf6ef90&gt;</span>
+
+
+<span class="sd">    :param args: One or more channels to select from.</span>
+<span class="sd">    :return: A channel with ``(value, channel)`` tuples corresponding to values added to the</span>
+<span class="sd">        selected channels.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">Channel</span><span class="p">()</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="n">args</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">select_one</span><span class="p">(</span><span class="n">c</span><span class="p">:</span> <span class="n">Channel</span><span class="p">[</span><span class="n">T</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">async</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">c</span><span class="p">:</span>
+            <span class="k">await</span> <span class="n">r</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">v</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">selector</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">async</span> <span class="k">with</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">TaskGroup</span><span class="p">()</span> <span class="k">as</span> <span class="n">tg</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+                <span class="n">tg</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">select_one</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+        <span class="n">r</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="n">stpr</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">selector</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">r</span></div>
+
+
+</pre></div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        <div id="right_sidebar">
+            <h4>Page contents</h4>
+            <div class="page_toc">
+                
+            </div>
+        </div>
+    
+
+      <div class="clearer"></div>
+    </div>
+    <div class="button_nav_wrapper">
+        <div class="button_nav">
+            <div class="left">
+                
+            </div>
+
+            <div class="right">
+                
+            </div>
+        </div>
+    </div>
+
+        
+
+  </body>
+</html>
